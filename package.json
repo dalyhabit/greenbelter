@@ -1,0 +1,10 @@
+{
+  "name": "greenbelter",
+  "version": "1.0.0",
+  "description": "Find the greenbelt swimming holes",
+  "main": "server/index.js",
+  "dependencies": {
+    "request": "^2.81.0"
+  },
+  "devDependencies": {}
+}
