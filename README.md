@@ -25,3 +25,13 @@ The point at which flow rates and water depth are measured are:
 * Barton Creek at Lost Creek Blvd.
 * Barton Creek at Loop 360
 * Barton Creek above Barton Springs
+
+### Which data point corresponds to which swimming hole?
+
+Displaying the water status for different swimming holes on the greenbelt is difficult because none of the swimming holes have a flow/depth meter specific to that location. Generally, if there is no water at Loop 360, there will be no water at Gus Fruh, Campbell's Hole, The Flats, and the water level will be quite low at Twin Falls. The two swimming holes that are most likely to have water when there is a dry spell are Hill of Life Dam and Sculpture Falls because they are the furthest upstream.
+
+To determine if there is water at each swimming hole, the following data points should be considered:
+
+* Hill of Life Dam & Sculpture Falls => Look at data for Lost Creek Blvd.
+* Twin Falls => Look at data for Loop 360
+* Campbell's Hole, Gus Fruh, and The Flats => Combination of Loop 360 and Barton Springs
