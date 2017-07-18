@@ -18,7 +18,7 @@ function waterStatus (flow, depth) {
 //
 // Static assets (html, etc.)
 //
-var assetFolder = Path.resolve(__dirname, '../client/');
+var assetFolder = path.resolve(__dirname, '../client/');
 routes.use(express.static(assetFolder));
 
 routes.get('/usgs', function(req, res){
