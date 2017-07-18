@@ -4,6 +4,7 @@
   "description": "Find the greenbelt swimming holes",
   "main": "server/index.js",
   "dependencies": {
+    "express": "^4.15.3",
     "request": "^2.81.0"
   },
   "devDependencies": {}

@@ -1,4 +1,7 @@
 var request = require('request');
+var express = require('express');
+var path = require('path');
+var routes = express.Router();
 
 request('https://waterservices.usgs.gov/nwis/iv/?format=json&indent=on&sites=08155200,%2008155240,%2008155300,%2008155400,%2008155500&parameterCd=00060,00065&siteStatus=all', function (error, response, body) {
   var dataObj = {
