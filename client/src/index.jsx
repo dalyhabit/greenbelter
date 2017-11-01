@@ -13,7 +13,7 @@ class App extends React.Component {
 
   componentDidMount() {
     $.ajax({
-      url: '/items', 
+      url: '/greenbelt-data', 
       success: (data) => {
         this.setState({
           items: data
