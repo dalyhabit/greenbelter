@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import SwimmingHole from './components/SwimmingHole.jsx';
-// import GreenbeltMap from 'react-svg-loader!../../assets/greenbelt-map.svg'
 import GreenbeltMap from './components/GreenbeltMap.jsx';
 
 class App extends React.Component {
@@ -11,6 +10,13 @@ class App extends React.Component {
     this.state = { 
       swimmingHole: 'default'
     };
+    this.changeSwimmingHole = this.changeSwimmingHole.bind(this);
+  }
+
+  changeSwimmingHole (value) {
+    this.setState({
+      swimmingHole: value
+    });
   }
 
   componentDidMount() {
@@ -19,12 +25,12 @@ class App extends React.Component {
       url: '/greenbelt-data', 
       success: (data) => {
         this.setState({
-          oakHill: data.oakHill,
-          lostCreek: data.lostCreek,
-          loop360: data.loop360,
-          aboveBartonSprings: data.aboveBartonSprings,
-          belowBartonSprings: data.belowBartonSprings
-        })
+          oakHill: data.oakHill.flow,
+          lostCreek: data.lostCreek.flow,
+          loop360: data.loop360.flow,
+          aboveBartonSprings: data.aboveBartonSprings.flow,
+          belowBartonSprings: data.belowBartonSprings.flow
+        });
       },
       error: (err) => {
         console.log('err', err);
@@ -35,8 +41,8 @@ class App extends React.Component {
   render () {
     return (
       <div>
-        <SwimmingHole swimmingHole={this.state.swimmingHole}/>
-        <GreenbeltMap/>
+        <SwimmingHole oakHill={this.state.oakHill} lostCreek={this.state.lostCreek} loop360={this.state.loop360} aboveBartonSprings={this.state.aboveBartonSprings} swimmingHole={this.state.swimmingHole}/>
+        <GreenbeltMap changeSwimmingHole={this.changeSwimmingHole}/>
       </div>
       )
   }

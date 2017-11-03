@@ -9,6 +9,7 @@ module.exports = {
     path: DIST_DIR
   },
   module : {
+    loaders : [
       {
         test : /\.jsx?/,
         include : SRC_DIR,
