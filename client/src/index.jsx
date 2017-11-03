@@ -1,22 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
-import List from './components/List.jsx';
+import SwimmingHole from './components/SwimmingHole.jsx';
+// import GreenbeltMap from 'react-svg-loader!../../assets/greenbelt-map.svg'
+import GreenbeltMap from './components/GreenbeltMap.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      items: []
-    }
+      swimmingHole: 'default'
+    };
   }
 
   componentDidMount() {
+
     $.ajax({
       url: '/greenbelt-data', 
       success: (data) => {
         this.setState({
-          items: data
+          oakHill: data.oakHill,
+          lostCreek: data.lostCreek,
+          loop360: data.loop360,
+          aboveBartonSprings: data.aboveBartonSprings,
+          belowBartonSprings: data.belowBartonSprings
         })
       },
       error: (err) => {
@@ -26,10 +33,12 @@ class App extends React.Component {
   }
 
   render () {
-    return (<div>
-      <h1>Item List</h1>
-      <List items={this.state.items}/>
-    </div>)
+    return (
+      <div>
+        <SwimmingHole swimmingHole={this.state.swimmingHole}/>
+        <GreenbeltMap/>
+      </div>
+      )
   }
 }
 
