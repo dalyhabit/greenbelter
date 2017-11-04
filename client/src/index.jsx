@@ -25,11 +25,16 @@ class App extends React.Component {
       url: '/greenbelt-data', 
       success: (data) => {
         this.setState({
-          oakHill: data.oakHill.flow,
-          lostCreek: data.lostCreek.flow,
-          loop360: data.loop360.flow,
-          aboveBartonSprings: data.aboveBartonSprings.flow,
-          belowBartonSprings: data.belowBartonSprings.flow
+          oakHillFlow: data.oakHill.flow,
+          lostCreekFlow: data.lostCreek.flow,
+          loop360Flow: data.loop360.flow,
+          aboveBartonSpringsFlow: data.aboveBartonSprings.flow,
+          belowBartonSpringsFlow: data.belowBartonSprings.flow,
+          oakHillDepth: data.oakHill.depth,
+          lostCreekDepth: data.lostCreek.depth,
+          loop360Depth: data.loop360.depth,
+          aboveBartonSpringsDepth: data.aboveBartonSprings.depth,
+          belowBartonSpringsDepth: data.belowBartonSprings.depth
         });
       },
       error: (err) => {
@@ -41,8 +46,18 @@ class App extends React.Component {
   render () {
     return (
       <div>
-        <SwimmingHole oakHill={this.state.oakHill} lostCreek={this.state.lostCreek} loop360={this.state.loop360} aboveBartonSprings={this.state.aboveBartonSprings} swimmingHole={this.state.swimmingHole}/>
-        <GreenbeltMap changeSwimmingHole={this.changeSwimmingHole}/>
+        <GreenbeltMap className="greenbelt-map" changeSwimmingHole={this.changeSwimmingHole}/>
+        <SwimmingHole 
+          className="swimming-hole" 
+          oakHillFlow={this.state.oakHillFlow} 
+          lostCreekFlow={this.state.lostCreekFlow} 
+          loop360Flow={this.state.loop360Flow} 
+          aboveBartonSpringsFlow={this.state.aboveBartonSpringsFlow} 
+          oakHillDepth={this.state.oakHillDepth} 
+          lostCreekDepth={this.state.lostCreekDepth} 
+          loop360Depth={this.state.loop360Depth} 
+          aboveBartonSpringsDepth={this.state.aboveBartonSpringsDepth} 
+          swimmingHole={this.state.swimmingHole}/>
       </div>
       )
   }
