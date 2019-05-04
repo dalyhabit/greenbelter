@@ -1,26 +1,113 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Greenbelter</title>
-  <link rel="icon" href="../assets/favicon.ico"/>
+  <link rel="icon" href="assets/favicon.ico" />
 </head>
+
 <body>
   <div id="app"></div>
   <script type="text/javascript" src="bundle.js"></script>
   <style type="text/css">
-    .st0{fill:#E6C3A5;}
-    .st1{fill:#B0CC6F;stroke:#000000;stroke-miterlimit:10;}
-    .st2{fill:none;stroke:#BE7360;stroke-miterlimit:10;}
-    .st3{fill:#A7D2BA;}
-    .st4{fill:none;stroke:#000000;stroke-miterlimit:10;}
-    .st5{fill:rgb(247, 235, 71);stroke:#000000;stroke-miterlimit:10;cursor:pointer;}
-    .st5:hover{fill:#F74747;stroke:#000000;stroke-miterlimit:10;cursor:pointer;}
-    .st6{fill:#F8F4EC;}
-    .st7{stroke:#000000;stroke-width:0.5;stroke-miterlimit:10;}
-    svg{display: inline-block; float: left; width: 100%;}
-    div{display: inline-block;}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      background-color: #fff;
+      color: #555;
+      font-family: 'Lato', 'Arial', sans-serif;
+      font-weight: 300;
+      font-size: 20px;
+      text-rendering: optimizeLegibility;
+    }
+
+    .toolbar {
+      width: 100%;
+      padding: .5em;
+    }
+
+    .title {
+      display: inline-block;
+    }
+
+    .nav-links {
+      float: right;
+      /* margin-top: 5em; */
+      list-style: none;
+    }
+
+    .nav-links li {
+      display: inline-block;
+      margin-left: 1em;
+    }
+
+    .st0 {
+      fill: #E6C3A5;
+    }
+
+    .st1 {
+      fill: #B0CC6F;
+      stroke: #000000;
+      stroke-miterlimit: 10;
+    }
+
+    .st2 {
+      fill: none;
+      stroke: #BE7360;
+      stroke-miterlimit: 10;
+    }
+
+    .st3 {
+      fill: #A7D2BA;
+    }
+
+    .st4 {
+      fill: none;
+      stroke: #000000;
+      stroke-miterlimit: 10;
+    }
+
+    .st5 {
+      fill: rgb(247, 235, 71);
+      stroke: #000000;
+      stroke-miterlimit: 10;
+      cursor: pointer;
+    }
+
+    .st5:hover {
+      fill: #F74747;
+      stroke: #000000;
+      stroke-miterlimit: 10;
+      cursor: pointer;
+    }
+
+    .st6 {
+      fill: #F8F4EC;
+    }
+
+    .st7 {
+      stroke: #000000;
+      stroke-width: 0.5;
+      stroke-miterlimit: 10;
+    }
+
+    svg {
+      display: inline-block;
+      float: left;
+      width: 100%;
+    }
+
+    div {
+      display: inline-block;
+    }
+
     /*html, body { margin:0; padding:0; overflow:hidden }*/
     /*svg { position:fixed; top:0; bottom:0; left:0; right:0 }*/
   </style>
 </body>
+
 </html>

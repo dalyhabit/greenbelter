@@ -3,39 +3,47 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import SwimmingHole from './components/SwimmingHole.jsx';
 import GreenbeltMap from './components/GreenbeltMap.jsx';
+import Toolbar from './components/Toolbar.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      swimmingHole: 'default'
+      locationIndex: {
+        'Hill of Life': 'lostCreek',
+        'Sculpture Falls': 'lostCreek',
+        'Twin Falls': 'lostCreek',
+        'Gus Fruh': 'loop360',
+        'Campbell\'s Hole': 'loop360',
+        'The Flats': 'loop360',
+        'Barton Springs': 'belowBartonSprings',
+      }
     };
     this.changeSwimmingHole = this.changeSwimmingHole.bind(this);
   }
 
   changeSwimmingHole (value) {
+    const waterLocation = this.state.locationIndex[value];
     this.setState({
-      swimmingHole: value
+      swimmingHole: value,
+      waterData: this.state[waterLocation]
     });
   }
 
   componentDidMount() {
-
+    // Get water flow data from USGS on page load
     $.ajax({
       url: '/greenbelt-data', 
       success: (data) => {
+        console.log('greenbelt data:', data);
         this.setState({
-          oakHillFlow: data.oakHill.flow,
-          lostCreekFlow: data.lostCreek.flow,
-          loop360Flow: data.loop360.flow,
-          aboveBartonSpringsFlow: data.aboveBartonSprings.flow,
-          belowBartonSpringsFlow: data.belowBartonSprings.flow,
-          oakHillDepth: data.oakHill.depth,
-          lostCreekDepth: data.lostCreek.depth,
-          loop360Depth: data.loop360.depth,
-          aboveBartonSpringsDepth: data.aboveBartonSprings.depth,
-          belowBartonSpringsDepth: data.belowBartonSprings.depth
+          aboveBartonSprings : data.aboveBartonSprings,
+          belowBartonSprings : data.belowBartonSprings,
+          oakHill : data.oakHill,
+          lostCreek : data.lostCreek,
+          loop360 : data.loop360
         });
+        console.log('STATE:', this.state);
       },
       error: (err) => {
         console.log('err', err);
@@ -46,17 +54,11 @@ class App extends React.Component {
   render () {
     return (
       <div>
+        <Toolbar/>
         <GreenbeltMap className="greenbelt-map" changeSwimmingHole={this.changeSwimmingHole}/>
         <SwimmingHole 
           className="swimming-hole" 
-          oakHillFlow={this.state.oakHillFlow} 
-          lostCreekFlow={this.state.lostCreekFlow} 
-          loop360Flow={this.state.loop360Flow} 
-          aboveBartonSpringsFlow={this.state.aboveBartonSpringsFlow} 
-          oakHillDepth={this.state.oakHillDepth} 
-          lostCreekDepth={this.state.lostCreekDepth} 
-          loop360Depth={this.state.loop360Depth} 
-          aboveBartonSpringsDepth={this.state.aboveBartonSpringsDepth} 
+          waterData={this.state.waterData} 
           swimmingHole={this.state.swimmingHole}/>
       </div>
       )

@@ -19,22 +19,27 @@ app.get('/greenbelt-data', function (req, res) {
     if (!error && response.statusCode == 200) {
       var data = JSON.parse(body);
 
+      dataObj.oakHill.displayName = 'Barton Creek @ SH 71';
       dataObj.oakHill.name = data.value.timeSeries[0].sourceInfo.siteName;
       dataObj.oakHill.flow = Number(data.value.timeSeries[0].values[0].value[0].value);
       dataObj.oakHill.depth = Number(data.value.timeSeries[1].values[0].value[0].value);
 
+      dataObj.lostCreek.displayName = 'Barton Creek @ Lost Creek Blvd.';
       dataObj.lostCreek.name = data.value.timeSeries[2].sourceInfo.siteName;
       dataObj.lostCreek.flow = Number(data.value.timeSeries[2].values[0].value[0].value);
       dataObj.lostCreek.depth = Number(data.value.timeSeries[3].values[0].value[0].value);
       
+      dataObj.loop360.displayName = 'Barton Creek @ Loop 360';
       dataObj.loop360.name = data.value.timeSeries[4].sourceInfo.siteName;
       dataObj.loop360.flow = Number(data.value.timeSeries[4].values[0].value[0].value);
       dataObj.loop360.depth = Number(data.value.timeSeries[5].values[0].value[0].value);
       
+      dataObj.aboveBartonSprings.displayName = 'Barton Creek above Barton Springs';
       dataObj.aboveBartonSprings.name = data.value.timeSeries[6].sourceInfo.siteName;
       dataObj.aboveBartonSprings.flow = Number(data.value.timeSeries[6].values[0].value[0].value);
       dataObj.aboveBartonSprings.depth = Number(data.value.timeSeries[7].values[0].value[0].value);
 
+      dataObj.belowBartonSprings.displayName = 'Barton Springs';
       dataObj.belowBartonSprings.name = data.value.timeSeries[8].sourceInfo.siteName;
       dataObj.belowBartonSprings.flow = Number(data.value.timeSeries[8].values[0].value[0].value);
       dataObj.belowBartonSprings.depth = Number(data.value.timeSeries[9].values[0].value[0].value);
