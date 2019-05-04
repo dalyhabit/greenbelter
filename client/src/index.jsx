@@ -52,16 +52,24 @@ class App extends React.Component {
   }
 
   render () {
-    return (
-      <div>
-        <Toolbar/>
-        <GreenbeltMap className="greenbelt-map" changeSwimmingHole={this.changeSwimmingHole}/>
-        <SwimmingHole 
-          className="swimming-hole" 
-          waterData={this.state.waterData} 
-          swimmingHole={this.state.swimmingHole}/>
-      </div>
+    if (this.state.swimmingHole) {
+      return (
+        <div className="react-root">
+          <Toolbar />
+          <SwimmingHole
+            className="swimming-hole"
+            waterData={this.state.waterData}
+            swimmingHole={this.state.swimmingHole} />
+        </div>
       )
+    } else {
+      return (
+        <div className="react-root">
+          <Toolbar/>
+          <GreenbeltMap className="greenbelt-map" changeSwimmingHole={this.changeSwimmingHole}/>
+        </div>
+        )
+    }
   }
 }
 

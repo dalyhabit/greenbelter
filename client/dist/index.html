@@ -25,8 +25,24 @@
       text-rendering: optimizeLegibility;
     }
 
+    body {
+      overflow: hidden;
+    }
+
+    html,
+    body,
+    #app,
+    .react-root
+     {
+      height: 100%;
+      width: 100%;
+    }
+
+    /* TOOLBAR */
+
     .toolbar {
       width: 100%;
+      height: 48px;
       padding: .5em;
     }
 
@@ -43,6 +59,13 @@
     .nav-links li {
       display: inline-block;
       margin-left: 1em;
+    }
+
+    /* MAIN COMPONENTS */
+
+    .app-body {
+      width: 100%;
+      height: calc(100% - 44px);
     }
 
     .st0 {
@@ -95,10 +118,12 @@
       stroke-miterlimit: 10;
     }
 
+    .svg-wrapper {
+      text-align: center;
+    }
+
     svg {
-      display: inline-block;
-      float: left;
-      width: 100%;
+      height: 100%;
     }
 
     div {
