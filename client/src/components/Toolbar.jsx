@@ -1,17 +1,35 @@
 import React from 'react';
 
-const Toolbar = () => {
-  return (
-  <div className="toolbar">
-    <h1 className="title">Greenbelter</h1>
-    <span className="spacer"></span>
-    <ul className="nav-links">
-      <li className="link">Map</li>
-      <li className="link">Water</li>
-      <li className="link">Swimming Holes</li>
-    </ul>
-  </div>
-  )
-}
+export default class Toolbar extends React.Component {
 
-export default Toolbar;
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick () {
+    this.props.clickMap();
+  }
+
+  render() {
+    if (this.props.showMap) {
+      return (
+        <div className="toolbar">
+          <h1 className="title">Greenbelter</h1>
+        </div>
+      )
+    } else {
+      return (
+        <div className="toolbar">
+          <h1 className="title">Greenbelter</h1>
+          <ul className="nav-links">
+            <li className="link" onClick={() => {this.handleClick()}}>Back to map</li>
+            {/* <li className="link">Water</li>
+            <li className="link">Swimming Holes</li> */}
+          </ul>
+        </div>
+      )
+    }
+  }
+
+}

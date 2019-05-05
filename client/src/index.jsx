@@ -17,16 +17,27 @@ class App extends React.Component {
         'Campbell\'s Hole': 'loop360',
         'The Flats': 'loop360',
         'Barton Springs': 'belowBartonSprings',
-      }
+      },
+      showMap: true
     };
     this.changeSwimmingHole = this.changeSwimmingHole.bind(this);
+    this.clickMap = this.clickMap.bind(this);
   }
 
   changeSwimmingHole (value) {
     const waterLocation = this.state.locationIndex[value];
     this.setState({
       swimmingHole: value,
-      waterData: this.state[waterLocation]
+      waterData: this.state[waterLocation],
+      showMap: false
+    });
+  }
+
+  clickMap () {
+    this.setState({
+      swimmingHole: null,
+      waterData: null,
+      showMap: true
     });
   }
 
@@ -52,10 +63,10 @@ class App extends React.Component {
   }
 
   render () {
-    if (this.state.swimmingHole) {
+    if (!this.state.showMap) {
       return (
         <div className="react-root">
-          <Toolbar />
+          <Toolbar clickMap={this.clickMap} showMap={this.state.showMap}/>
           <SwimmingHole
             className="swimming-hole"
             waterData={this.state.waterData}
@@ -65,7 +76,7 @@ class App extends React.Component {
     } else {
       return (
         <div className="react-root">
-          <Toolbar/>
+          <Toolbar clickMap={this.clickMap} showMap={this.state.showMap}/>
           <GreenbeltMap className="greenbelt-map" changeSwimmingHole={this.changeSwimmingHole}/>
         </div>
         )

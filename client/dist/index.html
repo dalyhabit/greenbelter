@@ -17,7 +17,7 @@
     }
 
     html {
-      background-color: #fff;
+      background-color: #fffff0;
       color: #555;
       font-family: 'Lato', 'Arial', sans-serif;
       font-weight: 300;
@@ -52,13 +52,19 @@
 
     .nav-links {
       float: right;
-      /* margin-top: 5em; */
       list-style: none;
     }
 
     .nav-links li {
       display: inline-block;
       margin-left: 1em;
+      transition: border-bottom 0.2s;
+      font-size: 75%;
+    }
+
+    .nav-links li:hover {
+      cursor: pointer;
+      border-bottom: 2px solid #e67e22;
     }
 
     /* MAIN COMPONENTS */
@@ -66,6 +72,16 @@
     .app-body {
       width: 100%;
       height: calc(100% - 44px);
+    }
+
+    /* GREENBELT MAP */
+
+    .svg-wrapper {
+      text-align: center;
+    }
+
+    svg {
+      height: 100%;
     }
 
     .st0 {
@@ -117,21 +133,6 @@
       stroke-width: 0.5;
       stroke-miterlimit: 10;
     }
-
-    .svg-wrapper {
-      text-align: center;
-    }
-
-    svg {
-      height: 100%;
-    }
-
-    div {
-      display: inline-block;
-    }
-
-    /*html, body { margin:0; padding:0; overflow:hidden }*/
-    /*svg { position:fixed; top:0; bottom:0; left:0; right:0 }*/
   </style>
 </body>
 
