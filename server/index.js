@@ -47,7 +47,9 @@ app.get('/greenbelt-data', function (req, res) {
       console.log("Success!:\n", dataObj);
       res.send(dataObj);
     } else {
-      console.error(error);
+      console.error('Error retrieving water data:\n', error);
+      res.status(500);
+      res.send(JSON.stringify(error));
     }
   });
 });
