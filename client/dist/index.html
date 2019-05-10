@@ -4,6 +4,7 @@
 <head>
   <title>Greenbelter</title>
   <link rel="icon" href="assets/favicon.ico" />
+  <link href="https://fonts.googleapis.com/css?family=Architects+Daughter" rel="stylesheet">
 </head>
 
 <body>
@@ -18,9 +19,10 @@
 
     html {
       background-color: #fffff0;
-      color: #555;
-      font-family: 'Lato', 'Arial', sans-serif;
-      font-weight: 300;
+      color: rgb(77, 76, 76);
+      /* font-family: 'Lato', 'Arial', sans-serif; */
+      /* font-weight: 300; */
+      font-family: 'Architects Daughter', cursive;
       font-size: 20px;
       text-rendering: optimizeLegibility;
     }
@@ -46,13 +48,21 @@
       justify-content: space-between;
       width: 100%;
       height: 48px;
-      padding: .5em;
     }
 
-    .title {}
+    .title {
+      padding-left: 5px;
+      margin-top: -5px;
+      color: #8ca552;
+    }
+
+    .pointer {
+      cursor: pointer;
+    }
 
     .nav-links {
       list-style: none;
+      padding-right: 5px;
     }
 
     .nav-links li {
@@ -77,30 +87,52 @@
 
     .swimming-hole-container {
       display: flex;
-      flex-direction: row;
+      /* flex-direction: row; */
+      flex-direction: column;
       justify-content: center;
       align-items: center;
     }
 
-    .swimming-hole-map,
+    .swimming-hole-map {
+      width: 70%;
+      height: 65%;
+    }
+    
     .swimming-hole-water {
-      width: 45%;
-      height: 60%;
+      width: 70%;
+      height: 30%;
     }
 
-    .swimming-hole-map {
-      border: 1px solid black;
+    .swimming-hole-water h2 {
+      text-align: center;
+    }
+
+    .swimming-hole-map,
+    .swimming-hole-water {
+      margin: 5px;
     }
 
     .water-data {
+      vertical-align: center;
       list-style: none;
       display: flex;
       flex-direction: column;
-      justify-content: space-around;
+      justify-content: space-evenly;
     }
     
     .water-data li {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
 
+    .value {
+      float: right;
+    }
+
+    .swimming-hole-map iframe {
+        width: 100% !important;
+        height: 100% !important;
     }
 
     /* GREENBELT MAP */
@@ -111,6 +143,7 @@
 
     svg {
       height: 100%;
+      max-width: 98%;
     }
 
     .st0 {

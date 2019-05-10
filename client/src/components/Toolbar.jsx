@@ -15,13 +15,13 @@ export default class Toolbar extends React.Component {
     if (this.props.showMap) {
       return (
         <div className="toolbar">
-          <h1 className="title">Greenbelter</h1>
+          <h1 className="title">greenbelter.io</h1>
         </div>
       )
     } else {
       return (
         <div className="toolbar">
-          <h1 className="title">Greenbelter</h1>
+          <h1 className="title pointer" onClick={() => { this.handleClick() }}>greenbelter.io</h1>
           <ul className="nav-links">
             <li className="link" onClick={() => {this.handleClick()}}>Back to map</li>
             {/* <li className="link">Water</li>
