@@ -1,7 +1,7 @@
 module.exports = {
   apps: [{
     name: 'greenbelter',
-    script: './index.js'
+    script: './server/index.js'
   }],
   deploy: {
     production: {
