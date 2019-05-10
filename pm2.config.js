@@ -6,7 +6,7 @@ module.exports = {
   deploy: {
     production: {
       user: 'ubuntu',
-      host: 'ec2-52-14-173-137.us-east-2.compute.amazonaws.com',
+      host: 'ec2-18-221-83-217.us-east-2.compute.amazonaws.com',
       key: '~/.ssh/greenbelter.pem',
       ref: 'origin/master',
       repo: 'https://github.com/dalyhabit/greenbelter.git',
