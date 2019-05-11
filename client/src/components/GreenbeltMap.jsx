@@ -1,14 +1,10 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 export default class GreenbeltMap extends React.Component {
 
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick (value) {
-    this.props.changeSwimmingHole(value);
   }
 
   render() {
@@ -1232,20 +1228,27 @@ export default class GreenbeltMap extends React.Component {
             </g>
           </g>
           <g id="Clickables">
-            <polygon onClick={() => {this.handleClick("Hill of Life")}} className="st5" points="175.7,224.2 168.5,220.5 161.3,224.3 162.6,216.3 156.7,210.7 164.7,209.4 168.2,202.1 171.9,209.3 
-              180,210.4 174.2,216.2   "/>
-            <polygon onClick={() => {this.handleClick("Sculpture Falls")}} className="st5" points="291.5,366.5 284.2,362.2 276.6,365.8 278.4,357.6 272.6,351.4 281,350.6 285.1,343.2 288.5,350.9 
-              296.8,352.5 290.5,358.1   "/>
-            <polygon onClick={() => {this.handleClick("Twin Falls")}} className="st5" points="409.1,515.8 401.8,511.7 394.3,515.5 395.8,507.2 389.9,501.2 398.3,500.2 402.1,492.7 405.7,500.3 
-              414,501.7 407.9,507.4   "/>
-            <polygon onClick={() => {this.handleClick("Gus Fruh")}} className="st5" points="609.9,512.2 602.2,507.9 594.4,511.8 596.1,503.2 590,497 598.6,495.9 602.7,488.2 606.4,496.1 
-              615,497.5 608.6,503.5   "/>
-            <polygon onClick={() => {this.handleClick("Campbell's Hole")}} className="st5" points="724.9,420.3 718,416.6 711,420.2 712.4,412.4 706.8,406.9 714.6,405.8 718.2,398.8 721.6,405.9 
-              729.4,407.2 723.7,412.6   "/>
-            <polygon onClick={() => {this.handleClick("The Flats")}} className="st5" points="718.1,438 712.4,435.2 706.8,438.3 707.7,432 703.1,427.6 709.3,426.6 712,420.8 715,426.4 
-              721.3,427.2 716.9,431.7   "/>
-            <polygon onClick={() => {this.handleClick("Barton Springs")}} className="st5" points="786.6,347.6 778.9,343.7 771.2,347.9 772.6,339.2 766.2,333.3 774.8,331.9 778.6,324 782.5,331.8 
-              791.2,332.9 785,339.1   "/>
+            <Link to={`details/hill-of-life`}>
+              <polygon className="st5" points="175.7,224.2 168.5,220.5 161.3,224.3 162.6,216.3 156.7,210.7 164.7,209.4 168.2,202.1 171.9,209.3 180,210.4 174.2,216.2   "/>
+            </Link>
+            <Link to={`details/sculpture-falls`}>
+              <polygon className="st5" points="291.5,366.5 284.2,362.2 276.6,365.8 278.4,357.6 272.6,351.4 281,350.6 285.1,343.2 288.5,350.9 296.8,352.5 290.5,358.1   "/>
+            </Link>
+            <Link to={`details/twin-falls`}>
+              <polygon className="st5" points="409.1,515.8 401.8,511.7 394.3,515.5 395.8,507.2 389.9,501.2 398.3,500.2 402.1,492.7 405.7,500.3 414,501.7 407.9,507.4   "/>
+            </Link>
+            <Link to={`details/gus-fruh`}>
+              <polygon className="st5" points="609.9,512.2 602.2,507.9 594.4,511.8 596.1,503.2 590,497 598.6,495.9 602.7,488.2 606.4,496.1 615,497.5 608.6,503.5   "/>
+            </Link>
+            <Link to={`details/campbells-hole`}>
+              <polygon className="st5" points="724.9,420.3 718,416.6 711,420.2 712.4,412.4 706.8,406.9 714.6,405.8 718.2,398.8 721.6,405.9 729.4,407.2 723.7,412.6   "/>
+            </Link>
+            <Link to={`details/the-flats`}>
+              <polygon className="st5" points="718.1,438 712.4,435.2 706.8,438.3 707.7,432 703.1,427.6 709.3,426.6 712,420.8 715,426.4 721.3,427.2 716.9,431.7   "/>
+            </Link>
+            <Link to={`details/barton-springs`}>
+              <polygon className="st5" points="786.6,347.6 778.9,343.7 771.2,347.9 772.6,339.2 766.2,333.3 774.8,331.9 778.6,324 782.5,331.8 791.2,332.9 785,339.1   "/>
+            </Link>
           </g>
           <g id="Greenbelt_Logo">
             <g>

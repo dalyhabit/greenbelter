@@ -1,35 +1,14 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-export default class Toolbar extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick () {
-    this.props.clickMap();
-  }
-
-  render() {
-    if (this.props.showMap) {
-      return (
-        <div className="toolbar">
-          <h1 className="title">greenbelter.io</h1>
-        </div>
-      )
-    } else {
-      return (
-        <div className="toolbar">
-          <h1 className="title pointer" onClick={() => { this.handleClick() }}>greenbelter.io</h1>
-          <ul className="nav-links">
-            <li className="link" onClick={() => {this.handleClick()}}>Back to map</li>
-            {/* <li className="link">Water</li>
-            <li className="link">Swimming Holes</li> */}
-          </ul>
-        </div>
-      )
-    }
-  }
-
+function Toolbar() {
+  return (
+    <div className="toolbar">
+      <Link to="/">
+        <h1 className="title">greenbelter.io</h1>
+      </Link>
+    </div>
+  )
 }
+
+export default Toolbar;
