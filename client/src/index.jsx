@@ -87,6 +87,10 @@ class App extends React.Component {
       return (
         <div className="react-root">
           <Toolbar clickMap={this.clickMap} showMap={this.state.showMap}/>
+          <div className="click-message">
+            <p>Click star to select</p>
+            <p>a swimming hole</p>
+          </div>
           <GreenbeltMap className="greenbelt-map" changeSwimmingHole={this.changeSwimmingHole}/>
         </div>
         )
