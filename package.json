@@ -28,6 +28,7 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.0",
     "react": "^15.4.2",
+    "react-d3-speedometer": "^0.6.1",
     "react-dom": "^15.4.2",
     "react-modal": "^3.8.1",
     "react-router-dom": "^5.0.0",

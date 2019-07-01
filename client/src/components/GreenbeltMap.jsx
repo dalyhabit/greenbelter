@@ -9,13 +9,14 @@ export default class GreenbeltMap extends React.Component {
   }
 
   handleClick(type, name) {
+    this.props.updateLocation(type, name);
     this.props.openModal(type, name);
   }
 
   render() {
     return (
       <div className="app-body svg-wrapper">
-        <svg viewBox="0 0 776 647">
+        <svg className="swimming-holes" viewBox="0 0 776 647">
           <title>greenbelt-map</title>
           <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
             <g id="greenbelt" transform="translate(-11.000000, 1.000000)">

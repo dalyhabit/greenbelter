@@ -14,6 +14,7 @@
   <title>Greenbelter</title>
   <link rel="icon" href="assets/favicon.ico" />
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Reenie+Beanie&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -29,7 +30,7 @@
     html {
       background-color: #fffff0;
       color: rgb(77, 76, 76);
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Reenie Beanie', cursive;
       font-size: 20px;
       text-rendering: optimizeLegibility;
     }
@@ -107,13 +108,18 @@
     }
 
     .swimming-hole-map {
-      width: 70%;
-      height: 65%;
+      width: 100%;
+      height: 75%;
     }
     
     .swimming-hole-water {
-      width: 70%;
-      height: 30%;
+      font-family: 'Roboto', sans-serif;
+      width: 100%;
+      height: 75%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
     .swimming-hole-water h2 {
@@ -166,9 +172,9 @@
       text-align: center;
     }
 
-    svg {
+    svg.swimming-holes {
       height: 100%;
-      max-width: 98%;
+      max-width: 100%;
     }
 
     .star:hover {
@@ -179,58 +185,92 @@
       fill: #F74747;
       cursor: pointer;
     }
-    #hill-of-life:hover ~ #lost-creek {
-      fill: #F74747;
-    }
-    #sculpture-falls:hover ~ #lost-creek {
-      fill: #F74747;
-    }
-    #twin-falls:hover ~ #lost-creek {
-      fill: #F74747;
-    }
-    
-    #gus-fruh:hover ~ #loop-360 {
-      fill: #F74747;
-    }
-    #campbells-hole:hover ~ #loop-360 {
-      fill: #F74747;
-    }
-    #the-flats:hover ~ #loop-360 {
-      fill: #F74747;
-    }
-    
-    #barton-springs:hover ~ #above-barton-springs {
-      fill: #F74747;
-    }
 
     /* MODAL */
 
     .flex-container {
-      height: 100%;
+      height: calc(100% - 90px);
       display: flex;
       flex-direction: row;
       justify-content: space-around;
     }
 
+    .modal-body {
+      height: 100%;
+      width: 90%;
+      margin: 0 5%;
+    }
+
     .modal-header {
-      height: 32px;
+      font-size: 34px;
+      height: 55px;
+      text-align: center;
+    }
+
+    .modal-footer {
+      height: 35px;
     }
 
     .google-map {
-      height: calc(100% - 32px);
+      height: 100%;
       width: 100%;
-      border: 1px solid black;
     }
 
     .description {
-      height: calc(100% - 32px);
+      height: 100%;
       width: 100%;
-      border: 1px solid black;
+    }
+
+    .details-title {
+      text-align: center;
+      /* height: 32px; */
+      margin-bottom: 20px;
+    }
+
+    .details-body {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .flow-gauge {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .gauge-label {
+      text-align: center;
+      font-size: 80%;
+      margin-bottom: .5em;
+    }
+
+    .speedometer {
+      margin-bottom: -40px;
+    }
+
+    .location-name {
+      margin: 0;
+    }
+
+    .location-details {
+      text-align: center;
+    }
+
+    .disclaimer {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      font-size: 50%
     }
 
     /* MEDIA QUERIES */
     @media only screen and (max-width: 1200px) {
-
+      div.ReactModal__Content {
+        width: 900px !important;
+      }
     }
 
     @media only screen and (max-width: 1023px) {
