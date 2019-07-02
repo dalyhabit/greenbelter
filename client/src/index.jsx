@@ -38,7 +38,9 @@ class App extends React.Component {
         "above-barton-springs": "Barton Creek above Barton Springs"
       },
       width: 0,
-      height: 0
+      height: 0,
+      gaugeWidth: 0,
+      orientation: null
     };
 
     this.openModal = this.openModal.bind(this);
@@ -58,7 +60,42 @@ class App extends React.Component {
   }
   
   updateWindowDimensions() {
-    this.setState({ width: window.innerWidth, height: window.innerHeight });
+    this.setState({ 
+      width: window.innerWidth, 
+      height: window.innerHeight,
+      orientation: window.screen.orientation.type
+    });
+    this.setGaugeSize(window.innerWidth, window.screen.orientation.type);
+  }
+
+  setGaugeSize(width, orientation) {
+    if (width > 1200) {
+      this.setState({
+        gaugeWidth: 210
+      });
+    } else if (width <= 1200 && width > 1023) {
+      this.setState({
+        gaugeWidth: 180
+      });
+    } else if (width <= 1023 && width > 767) {
+      this.setState({
+        gaugeWidth: 155
+      });
+    } else if (width <= 767 && width > 480) {
+      if (orientation.includes('landscape')) {
+        this.setState({
+          gaugeWidth: 155
+        });
+      } else {
+        this.setState({
+          gaugeWidth: 210
+        });
+      }
+    } else if (width <= 480) {
+      this.setState({
+        gaugeWidth: 155
+      });
+    }
   }
 
   updateLocation(type, name) {
@@ -66,7 +103,6 @@ class App extends React.Component {
       selectedLocation: name,
       locationType: type
     });
-    console.log("SELECTED LOCATION:", this.state.nameIndex[name]);
   }
 
   openModal(type, name) {
@@ -101,6 +137,7 @@ class App extends React.Component {
           >
             <div className="modal-body">
               <div className="modal-header">
+                { this.state.width < 601 ? <svg className="back-arrow" onClick={() => { this.closeModal() }} xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d="M15 8.25H5.87l4.19-4.19L9 3 3 9l6 6 1.06-1.06-4.19-4.19H15v-1.5z"/></svg> : null }
                 <h2>
                   {this.state.nameIndex[this.state.selectedLocation]}
                 </h2>
@@ -110,7 +147,7 @@ class App extends React.Component {
                   <GoogleMap selectedLocation={this.state.selectedLocation}/>
                 </div>
                 <div className="description">
-                  <Details selectedLocation={this.state.selectedLocation} updateLocation={this.updateLocation} screenWidth={this.state.width}/>
+                  <Details selectedLocation={this.state.selectedLocation} locationType={this.state.locationType} updateLocation={this.updateLocation} gaugeWidth={this.state.gaugeWidth}/>
                 </div>
               </div>
               <div className="modal-footer">

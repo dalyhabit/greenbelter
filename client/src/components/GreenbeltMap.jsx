@@ -43,25 +43,25 @@ export default class GreenbeltMap extends React.Component {
                 <path onClick={() => { this.handleClick('droplet', 'above-barton-springs') }} className="droplet" d="M725.26034,200.241665 L719.880875,209.996018 C718.750436,212.058217 718.663125,214.680375 719.880875,216.888454 C721.711466,220.207773 725.783535,221.355723 728.97609,219.452409 C732.168646,217.54912 733.272749,213.315361 731.442135,209.995994 L726.06267,200.241665 C725.884973,199.919445 725.438014,199.919445 725.26034,200.241665 Z" id="above-barton-springs" fill="#4A90E2"></path>
               </g>
               <g id="Labels" transform="translate(9.000000, 201.000000)" fill="#000000" fontFamily="ReenieBeanie, Reenie Beanie" fontSize="38" fontWeight="normal">
-                <text id="Twin-Falls">
+                <text className="swimming-hole-label" id="Twin-Falls" onClick={() => { this.handleClick('star', 'twin-falls') }}>
                   <tspan x="211" y="293">Twin Falls</tspan>
                 </text>
-                <text id="Sculpture-Falls">
+                <text className="swimming-hole-label" id="Sculpture-Falls" onClick={() => { this.handleClick('star', 'sculpture-falls') }}>
                   <tspan x="268" y="100">Sculpture Falls</tspan>
                 </text>
-                <text id="Barton-Springs">
+                <text className="swimming-hole-label" id="Barton-Springs" onClick={() => { this.handleClick('star', 'barton-springs') }}>
                   <tspan x="588" y="72">Barton Springs</tspan>
                 </text>
-                <text id="Hill-of-Life">
+                <text className="swimming-hole-label" id="Hill-of-Life" onClick={() => { this.handleClick('star', 'hill-of-life') }}>
                   <tspan x="0" y="37">Hill of Life</tspan>
                 </text>
-                <text id="Gus-Fruh">
+                <text className="swimming-hole-label" id="Gus-Fruh" onClick={() => { this.handleClick('star', 'gus-fruh') }}>
                   <tspan x="434" y="289">Gus Fruh</tspan>
                 </text>
-                <text id="The-Flats">
+                <text className="swimming-hole-label" id="The-Flats" onClick={() => { this.handleClick('star', 'the-flats') }}>
                   <tspan x="624" y="244">The Flats</tspan>
                 </text>
-                <text id="Campbell's-Hole">
+                <text className="swimming-hole-label" id="Campbell's-Hole" onClick={() => { this.handleClick('star', 'campbells-hole') }}>
                   <tspan x="479" y="153">Campbell's Hole</tspan>
                 </text>
               </g>

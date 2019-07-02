@@ -13,7 +13,10 @@ export default class Details extends React.Component {
         "gus-fruh": "loop-360",
         "campbells-hole": "loop-360",
         "the-flats": "loop-360",
-        "barton-springs": "above-barton-springs"
+        "barton-springs": "above-barton-springs",
+        "lost-creek": "lost-creek",
+        "loop-360": "loop-360",
+        "above-barton-springs": "above-barton-springs"
       },
       nameIndex: {
         "hill-of-life": "Hill of Life Dam",
@@ -31,10 +34,11 @@ export default class Details extends React.Component {
         "gus-fruh": "08155300",
         "campbells-hole": "08155300",
         "the-flats": "08155300",
-        "barton-springs": "08155400"
-      },
-      gaugeWidth: 0,
-      gaugeHeight: 0
+        "barton-springs": "08155400",
+        "lost-creek": "08155240",
+        "loop-360": "08155300",
+        "above-barton-springs": "08155400"
+      }
     }
   }
 
@@ -43,7 +47,6 @@ export default class Details extends React.Component {
   }
 
   componentWillMount() {
-    this.setGaugeSize();
     const swimmingHole = this.props.selectedLocation;
     const siteId = this.state.siteIndex[swimmingHole];
     this.setState({
@@ -53,20 +56,21 @@ export default class Details extends React.Component {
   }
 
   setGaugeSize() {
-    const width = this.props.screenWidth;
-    if (width > 1200) {
-      this.state.gaugeWidth = 210;
-      this.state.gaugeHeight = 210;
-    } else if (width <= 1200) {
-      this.state.gaugeWidth = 180;
-      this.state.gaugeHeight = 180;
-    } else if (width <= 1023) {
+    // const width = this.props.screenWidth;
+    // if (width > 1200) {
+    //   this.state.gaugeWidth = 210;
+    //   this.state.gaugeHeight = 210;
+    // } else if (width <= 1200 && width > 1023) {
+    //   this.state.gaugeWidth = 180;
+    //   this.state.gaugeHeight = 180;
+    // } else if (width <= 1023 && width > 767) {
+    //   this.state.gaugeWidth = 155;
+    //   this.state.gaugeHeight = 155;
+    // } else if (width <= 767 && width > 480) {
 
-    } else if (width <= 767) {
+    // } else if (width <= 480) {
 
-    } else if (width <= 480) {
-
-    }
+    // }
   }
 
   fetchWaterData(siteId) {
@@ -93,13 +97,12 @@ export default class Details extends React.Component {
             <div className="flow-gauge">
               <p className="gauge-label">Depth</p>
               <ReactSpeedometer
-                // fluidWidth={true}
                 segments={5}
                 minValue={0}
                 maxValue={15}
                 value={this.state.depth ? this.state.depth : 0}
-                height={this.state.gaugeHeight}
-                width={this.state.gaugeWidth}
+                height={this.props.gaugeWidth}
+                width={this.props.gaugeWidth}
                 segmentColors={[
                   "#F44336",
                   "#FFC107",
@@ -115,13 +118,12 @@ export default class Details extends React.Component {
             <div className="flow-gauge">
               <p className="gauge-label">Flow Rate</p>
               <ReactSpeedometer
-                // fluidWidth={true}
                 segments={5}
                 minValue={0}
                 maxValue={300}
                 value={this.state.flow ? this.state.flow : 0}
-                height={this.state.gaugeHeight}
-                width={this.state.gaugeWidth}
+                height={this.props.gaugeWidth}
+                width={this.props.gaugeWidth}
                 segmentColors={[
                   "#2196F3",
                   "#4CAF50",
@@ -137,7 +139,7 @@ export default class Details extends React.Component {
           </div>
           <div className="location-details">
             <h4>Measurement Location:</h4>
-            <p className="location-name" onClick={() => { this.handleClick('droplet', this.state.waterIndex[this.state.selectedLocation]) }}>{this.state.location ? this.state.location : 'Loading...'}</p>
+            <p className="location-name" onClick={() => { this.handleClick('droplet', this.state.waterIndex[this.props.selectedLocation]) }}>{this.state.location ? this.state.location : 'Loading...'}</p>
           </div>
         </div>
       </div>

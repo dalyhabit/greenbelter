@@ -11,6 +11,7 @@
 
     gtag('config', 'UA-115926436-2');
   </script>
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
   <title>Greenbelter</title>
   <link rel="icon" href="assets/favicon.ico" />
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
@@ -161,6 +162,10 @@
 
     /* GREENBELT MAP */
 
+    .swimming-hole-label:hover {
+      cursor: pointer;
+    }
+
     .click-message {
       font-size: 80%;
       position: absolute;
@@ -266,6 +271,12 @@
       font-size: 50%
     }
 
+    .back-arrow {
+      position: fixed;
+      top: .5em;
+      left: .5em;
+    }
+
     /* MEDIA QUERIES */
     @media only screen and (max-width: 1200px) {
       div.ReactModal__Content {
@@ -274,15 +285,122 @@
     }
 
     @media only screen and (max-width: 1023px) {
-
+      div.ReactModal__Content {
+        width: 800px !important;
+      }
+      .modal-body {
+        width: 100%;
+        margin: 0;
+      }
+      /* .flex-container {
+        flex-direction: column;
+        justify-content: center;
+      } */
     }
 
     @media only screen and (max-width: 767px) {
+      div.ReactModal__Content {
+        width: 100% !important;
+        height: 80% !important;
+      }
+      .details-body {
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .speedometer {
+        margin-bottom: -70px;
+      }
+      .details-title {
+        margin-bottom: 5px;
+        font-size: 95%;
+      }
+      .location-details {
+        font-size: 70%;
+      }
+      .modal-footer {
+        height: 50px;
+      }
+      .flex-container {
+        height: calc(100% - 105px);
+      }
+    }
 
+    @media only screen and (max-width: 812px) and (orientation: landscape) {
+      div.ReactModal__Content {
+        width: 100% !important;
+        height: 80% !important;
+      }
+      .details-body {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .modal-header {
+        font-size: 24px;
+        height: 35px;
+      }
+      .flex-container {
+        height: calc(100% - 60px);
+      }
+      .modal-footer {
+        height: 25px;
+        font-size: 60%
+      }
+      .speedometer {
+        margin-bottom: -55px;
+      }
+      .google-map {
+        width: 60%;
+      }
+      .location-details {
+        font-size: 50%;
+      }
+      .details-title {
+        font-size: 75%;
+      }
+    }
+
+    @media only screen and (max-width: 600px) {
+      div.ReactModal__Content {
+        width: 100% !important;
+        height: 100% !important;
+      }
+      .flex-container {
+        height: calc(100% - 105px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .modal-footer {
+        height: 70px;
+      }
+      .flex-container {
+        height: calc(100% - 125px);
+      }
+      .google-map {
+        height: 50%;
+      }
+      .description {
+        height: 50%;
+      }
+      .details-body {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
     }
 
     @media only screen and (max-width: 480px) {
-
+      .modal-footer {
+        height: 90px;
+      }
+      .flex-container {
+        height: calc(100% - 145px);
+      }
+      .speedometer {
+        margin-bottom: -50px;
+      }
     }
 
   </style>
