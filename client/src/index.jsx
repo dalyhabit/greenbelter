@@ -52,20 +52,27 @@ class App extends React.Component {
 
   componentDidMount() {
     this.updateWindowDimensions();
+    window.addEventListener("deviceorientation", this.handleOrientation);
     window.addEventListener('resize', this.updateWindowDimensions);
   }
   
   componentWillUnmount() {
+    window.removeEventListener("deviceorientation", this.handleOrientation);
     window.removeEventListener('resize', this.updateWindowDimensions);
+  }
+
+  handleOrientation(event) {
+    console.log('EVENT:', event);
   }
   
   updateWindowDimensions() {
+    const orientation = window.orientation;
     this.setState({ 
       width: window.innerWidth, 
       height: window.innerHeight,
-      orientation: window.screen.orientation.type
+      orientation: orientation
     });
-    this.setGaugeSize(window.innerWidth, window.screen.orientation.type);
+    this.setGaugeSize(window.innerWidth, orientation);
   }
 
   setGaugeSize(width, orientation) {
@@ -82,7 +89,7 @@ class App extends React.Component {
         gaugeWidth: 155
       });
     } else if (width <= 767 && width > 480) {
-      if (orientation.includes('landscape')) {
+      if (orientation) {
         this.setState({
           gaugeWidth: 155
         });
