@@ -119,9 +119,9 @@ export default class Details extends React.Component {
               />
             </div>
           </div>
-          <div className="location-details" onClick={() => { this.handleClick('droplet', this.state.waterIndex[this.props.selectedLocation]) }}>
+          <div className="location-details">
             <h4>Measurement Location:</h4>
-            <p className="location-name">{this.state.location ? this.state.location : 'Loading...'}</p>
+            <p className="location-name" onClick={() => { this.handleClick('droplet', this.state.waterIndex[this.props.selectedLocation]) }}>{this.state.location ? this.state.location : 'Loading...'}</p>
           </div>
         </div>
       </div>
