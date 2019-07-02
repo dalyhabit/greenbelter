@@ -418,14 +418,16 @@
     }
 
     @supports (-webkit-overflow-scrolling: touch) {
-      .gauge-label {
-        margin-top: 2em;
-      }
-      .location-details{
-        display: none;
-      }
-      .details-title {
-        display: none;
+      @media only screen and (max-width: 480px) {
+        .gauge-label {
+          margin-top: 2em;
+        }
+        .location-details{
+          display: none;
+        }
+        .details-title {
+          display: none;
+        }
       }
     }
 
