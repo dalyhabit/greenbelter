@@ -55,24 +55,6 @@ export default class Details extends React.Component {
     this.fetchWaterData(siteId);
   }
 
-  setGaugeSize() {
-    // const width = this.props.screenWidth;
-    // if (width > 1200) {
-    //   this.state.gaugeWidth = 210;
-    //   this.state.gaugeHeight = 210;
-    // } else if (width <= 1200 && width > 1023) {
-    //   this.state.gaugeWidth = 180;
-    //   this.state.gaugeHeight = 180;
-    // } else if (width <= 1023 && width > 767) {
-    //   this.state.gaugeWidth = 155;
-    //   this.state.gaugeHeight = 155;
-    // } else if (width <= 767 && width > 480) {
-
-    // } else if (width <= 480) {
-
-    // }
-  }
-
   fetchWaterData(siteId) {
     fetch(`https://waterservices.usgs.gov/nwis/iv/?format=json&indent=on&sites=${siteId}&parameterCd=00060,00065&siteStatus=all`)
     .then(response => response.json())
@@ -137,9 +119,9 @@ export default class Details extends React.Component {
               />
             </div>
           </div>
-          <div className="location-details">
+          <div className="location-details" onClick={() => { this.handleClick('droplet', this.state.waterIndex[this.props.selectedLocation]) }}>
             <h4>Measurement Location:</h4>
-            <p className="location-name" onClick={() => { this.handleClick('droplet', this.state.waterIndex[this.props.selectedLocation]) }}>{this.state.location ? this.state.location : 'Loading...'}</p>
+            <p className="location-name">{this.state.location ? this.state.location : 'Loading...'}</p>
           </div>
         </div>
       </div>
