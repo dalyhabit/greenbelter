@@ -16,15 +16,6 @@ export default class GoogleMap extends React.Component {
         "lost-creek": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3445.7105655001387!2d-97.84664648482511!3d30.27382691465481!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x865b4a696689056b%3A0x0!2zMzDCsDE2JzI1LjgiTiA5N8KwNTAnNDAuMSJX!5e0!3m2!1sen!2sus!4v1562013305546!5m2!1sen!2sus",
         "loop-360": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3446.7187251430732!2d-97.80352358482565!3d30.24509661602052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x865b4b26b56cf1b1%3A0x0!2zMzDCsDE0JzQyLjMiTiA5N8KwNDgnMDQuOCJX!5e0!3m2!1sen!2sus!4v1562013424729!5m2!1sen!2sus",
         "above-barton-springs": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13783.37498026859!2d-97.79469264198501!3d30.270033009465614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDE1JzQ4LjkiTiA5N8KwNDYnMjIuOCJX!5e0!3m2!1sen!2sus!4v1562013489264!5m2!1sen!2sus"
-      },
-      nameIndex: {
-        "hill-of-life": "Hill of Life Dam",
-        "sculpture-falls": "Sculpture Falls",
-        "twin-falls": "Twin Falls",
-        "gus-fruh": "Gus Fruh",
-        "campbells-hole": "Campbell's Hole",
-        "the-flats": "The Flats",
-        "barton-springs": "Barton Springs"
       }
     }
   }

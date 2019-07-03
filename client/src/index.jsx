@@ -1,21 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Details from './components/Details.jsx';
+import { BrowserRouter } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import GreenbeltMap from './components/GreenbeltMap.jsx';
-import GoogleMap from './components/GoogleMap.jsx';
-import Modal from 'react-modal';
-
-const customStyles = {
-  content: {
-    height: '70%',
-    width: '1140px',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)'
-  }
-};
-
-Modal.setAppElement('#app');
+import SwimmingHole from './components/SwimmingHole.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -24,28 +12,28 @@ class App extends React.Component {
     this.state = {
       selectedLocation: null,
       locationType: null,
-      modalIsOpen: false,
-      nameIndex: {
-        "hill-of-life": "Hill of Life Dam",
-        "sculpture-falls": "Sculpture Falls",
-        "twin-falls": "Twin Falls",
-        "gus-fruh": "Gus Fruh",
-        "campbells-hole": "Campbell's Hole",
-        "the-flats": "The Flats",
-        "barton-springs": "Barton Springs",
-        "lost-creek": "Lost Creek Blvd at Barton Creek",
-        "loop-360": "Loop 360 at Barton Creek",
-        "above-barton-springs": "Barton Creek above Barton Springs"
-      },
       width: 0,
       height: 0,
       gaugeWidth: 0,
-      orientation: null
+      orientation: null,
+      location: null,
+      flow: null,
+      depth: null,
+      siteIndex: {
+        "hill-of-life": "08155240",
+        "sculpture-falls": "08155240",
+        "twin-falls": "08155240",
+        "gus-fruh": "08155300",
+        "campbells-hole": "08155300",
+        "the-flats": "08155300",
+        "barton-springs": "08155400",
+        "lost-creek": "08155240",
+        "loop-360": "08155300",
+        "above-barton-springs": "08155400"
+      }
     };
 
-    this.openModal = this.openModal.bind(this);
-    this.afterOpenModal = this.afterOpenModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
+    this.fetchWaterData = this.fetchWaterData.bind(this);
     this.updateLocation = this.updateLocation.bind(this);
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
@@ -110,59 +98,40 @@ class App extends React.Component {
       selectedLocation: name,
       locationType: type
     });
+    const siteId = this.state.siteIndex[name];
+    this.fetchWaterData(siteId);
   }
 
-  openModal(type, name) {
-    this.setState({
-      modalIsOpen: true
-    });
-  }
-
-  afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    // this.subtitle.style.color = '#f00';
-  }
-
-  closeModal() {
-    this.setState({
-      selectedLocation: null,
-      locationType: null,
-      modalIsOpen: false
-    });
+  fetchWaterData(siteId) {
+    fetch(`https://waterservices.usgs.gov/nwis/iv/?format=json&indent=on&sites=${siteId}&parameterCd=00060,00065&siteStatus=all`)
+    .then(response => response.json())
+    .then((data) => {
+      this.setState({
+          location: data.value.timeSeries[0].sourceInfo.siteName,
+          flow: Number(data.value.timeSeries[0].values[0].value[0].value),
+          depth: Number(data.value.timeSeries[1].values[0].value[0].value)
+        });
+    })
+    .catch(error => {
+      console.error('ERROR FETCHING WATER DATA\n', error);
+    })
   }
 
   render () {
     return (
+      <BrowserRouter>
         <div className="react-root">
-          <GreenbeltMap openModal={this.openModal} updateLocation={this.updateLocation}/>
-          <Modal
-            isOpen={this.state.modalIsOpen}
-            onAfterOpen={this.afterOpenModal}
-            onRequestClose={this.closeModal}
-            style={customStyles}
-            contentLabel="Greenbelt Details"
-          >
-            <div className="modal-body">
-              <div className="modal-header">
-                { this.state.width < 601 ? <svg className="back-arrow" onClick={() => { this.closeModal() }} xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d="M15 8.25H5.87l4.19-4.19L9 3 3 9l6 6 1.06-1.06-4.19-4.19H15v-1.5z"/></svg> : null }
-                <h2>
-                  {this.state.nameIndex[this.state.selectedLocation]}
-                </h2>
-              </div>
-              <div className="flex-container">
-                <div className="google-map">
-                  <GoogleMap selectedLocation={this.state.selectedLocation}/>
-                </div>
-                <div className="description">
-                  <Details selectedLocation={this.state.selectedLocation} locationType={this.state.locationType} updateLocation={this.updateLocation} gaugeWidth={this.state.gaugeWidth}/>
-                </div>
-              </div>
-              <div className="modal-footer">
-                <p className="disclaimer">The Austin Parks Department closes trailheads after heavy rain. Always check park closure status at the <a href="http://austintexas.gov/parkclosures">City of Austin Parks and Recreation Website</a> or call the Barton Creek Greenbelt Hotline at (512) 974-1250 before going to the Barton Creek Greenbelt. The city of Austin does not provide Safe Swimming Threshold data for the Barton Creek Greenbelt. Stagnant or slow-moving water can lead to bacteria build-up. Water that is moving too quickly can be dangerous. The data provided on this website is for informational purposes only. Swim at your own risk.</p>
-              </div>
-            </div>
-          </Modal>
+          <Route
+            exact
+            path='/'
+            render={() => <GreenbeltMap updateLocation={this.updateLocation}/>}
+          />
+          <Route
+            path='/:url'
+            render={() => <SwimmingHole flow={this.state.flow} depth={this.state.depth} location={this.state.location} selectedLocation={this.state.selectedLocation} locationType={this.state.locationType} gaugeWidth={this.state.gaugeWidth} updateLocation={this.updateLocation}/>}
+          />
         </div>
+      </BrowserRouter>
     );
   }
 }

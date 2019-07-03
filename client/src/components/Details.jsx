@@ -1,4 +1,5 @@
 import React from 'react';
+import Gauge from 'react-svg-gauge';
 import ReactSpeedometer from "react-d3-speedometer"
 
 export default class Details extends React.Component {
@@ -17,57 +18,12 @@ export default class Details extends React.Component {
         "lost-creek": "lost-creek",
         "loop-360": "loop-360",
         "above-barton-springs": "above-barton-springs"
-      },
-      nameIndex: {
-        "hill-of-life": "Hill of Life Dam",
-        "sculpture-falls": "Sculpture Falls",
-        "twin-falls": "Twin Falls",
-        "gus-fruh": "Gus Fruh",
-        "campbells-hole": "Campbell's Hole",
-        "the-flats": "The Flats",
-        "barton-springs": "Barton Springs"
-      },
-      siteIndex: {
-        "hill-of-life": "08155240",
-        "sculpture-falls": "08155240",
-        "twin-falls": "08155240",
-        "gus-fruh": "08155300",
-        "campbells-hole": "08155300",
-        "the-flats": "08155300",
-        "barton-springs": "08155400",
-        "lost-creek": "08155240",
-        "loop-360": "08155300",
-        "above-barton-springs": "08155400"
       }
     }
   }
 
   handleClick(type, name) {
     this.props.updateLocation(type, name);
-  }
-
-  componentWillMount() {
-    const swimmingHole = this.props.selectedLocation;
-    const siteId = this.state.siteIndex[swimmingHole];
-    this.setState({
-      name: this.state.nameIndex[swimmingHole]
-    });
-    this.fetchWaterData(siteId);
-  }
-
-  fetchWaterData(siteId) {
-    fetch(`https://waterservices.usgs.gov/nwis/iv/?format=json&indent=on&sites=${siteId}&parameterCd=00060,00065&siteStatus=all`)
-    .then(response => response.json())
-    .then((data) => {
-      this.setState({
-          location: data.value.timeSeries[0].sourceInfo.siteName,
-          flow: Number(data.value.timeSeries[0].values[0].value[0].value),
-          depth: Number(data.value.timeSeries[1].values[0].value[0].value)
-        });
-    })
-    .catch(error => {
-      console.error('ERROR FETCHING WATER DATA\n', error);
-    })
   }
 
   render() {
@@ -77,51 +33,26 @@ export default class Details extends React.Component {
           <h3 className="details-title">Water Data</h3>
           <div className="details-body">
             <div className="flow-gauge">
-              <p className="gauge-label">Depth</p>
-              <ReactSpeedometer
-                segments={5}
-                minValue={0}
-                maxValue={15}
-                value={this.state.depth ? this.state.depth : 0}
-                height={this.props.gaugeWidth}
+              <Gauge
+                value={this.props.depth}
+                valueFormatter={(val) => `${val} ft`}
                 width={this.props.gaugeWidth}
-                segmentColors={[
-                  "#F44336",
-                  "#FFC107",
-                  "#4CAF50",
-                  "#2196F3",
-                  "#3F51B5",
-                ]}
-                needleTransition="easeElastic"
-                needleColor="#5b5b5b"
-                currentValueText="${value} ft"
-              />
+                height={this.props.gaugeWidth}
+                label="Depth"/>
             </div>
             <div className="flow-gauge">
-              <p className="gauge-label">Flow Rate</p>
-              <ReactSpeedometer
-                segments={5}
-                minValue={0}
-                maxValue={300}
-                value={this.state.flow ? this.state.flow : 0}
-                height={this.props.gaugeWidth}
+              <Gauge
+                value={this.props.flow}
+                valueFormatter={(val) => `${val} cf/s`}
                 width={this.props.gaugeWidth}
-                segmentColors={[
-                  "#2196F3",
-                  "#4CAF50",
-                  "#FFEB3B",
-                  "#FF9800",
-                  "#F44336",
-                ]}
-                needleTransition="easeElastic"
-                needleColor="#5b5b5b"
-                currentValueText="${value} cf/s"
+                height={this.props.gaugeWidth}
+                label="Flow Rate"
               />
             </div>
           </div>
           <div className="location-details">
             <h4>Measurement Location:</h4>
-            <p className="location-name" onClick={() => { this.handleClick('droplet', this.state.waterIndex[this.props.selectedLocation]) }}>{this.state.location ? this.state.location : 'Loading...'}</p>
+            <p className="location-name" onClick={() => { this.handleClick('droplet', this.state.waterIndex[this.props.selectedLocation]) }}>{this.props.location ? this.props.location : 'Loading...'}</p>
           </div>
         </div>
       </div>
