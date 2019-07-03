@@ -28,9 +28,9 @@ export default class SwimmingHole extends React.Component {
         "campbells-hole": "Campbell's Hole",
         "the-flats": "The Flats",
         "barton-springs": "Barton Springs",
-        "lost-creek": "Lost Creek Blvd at Barton Creek",
-        "loop-360": "Loop 360 at Barton Creek",
-        "above-barton-springs": "Barton Creek above Barton Springs"
+        "lost-creek": "Lost Creek Blvd",
+        "loop-360": "Loop 360",
+        "above-barton-springs": "Above Barton Springs"
       }
     }
   }
@@ -50,7 +50,7 @@ export default class SwimmingHole extends React.Component {
             <NavLink to="/">
               <svg className="back-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path d="M15 8.25H5.87l4.19-4.19L9 3 3 9l6 6 1.06-1.06-4.19-4.19H15v-1.5z" /></svg>
             </NavLink>
-            <h2>
+            <h2 id="location-title">
               {this.state.nameIndex[this.props.selectedLocation]}
             </h2>
           </div>

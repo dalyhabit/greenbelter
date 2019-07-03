@@ -36,11 +36,11 @@ export default class Details extends React.Component {
                 value={this.props.depth}
                 valueFormatter={(val) => this.props.depth ? `${val} ft` : 'Loading...'}
                 width={this.props.gaugeWidth}
-                height={this.props.gaugeWidth * .8}
+                height={this.props.gaugeWidth * .82}
                 label="Depth"
                 valueLabelStyle={ {'fontSize': '90%'} }
                 min={0}
-                max={30}
+                max={20}
                 color={this.props.depthColor}
               />
             </div>
@@ -49,7 +49,7 @@ export default class Details extends React.Component {
                 value={this.props.flow}
                 valueFormatter={(val) => this.props.flow ? `${val} cf/s` : 'Loading...'}
                 width={this.props.gaugeWidth}
-                height={this.props.gaugeWidth * .8}
+                height={this.props.gaugeWidth * .82}
                 label="Flow Rate"
                 valueLabelStyle = { {'fontSize': '90%'} }
                 min={0}
