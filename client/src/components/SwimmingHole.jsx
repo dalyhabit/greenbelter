@@ -40,7 +40,6 @@ export default class SwimmingHole extends React.Component {
     if (this.state.typeIndex[location]) {
       this.props.updateLocation(this.state.typeIndex[location], location);
     }
-    console.log('PROPS IN SWIMMINGHOLE:', this.props);
   }
 
   render () {
