@@ -59,7 +59,7 @@ export default class SwimmingHole extends React.Component {
               <GoogleMap selectedLocation={this.props.selectedLocation} />
             </div>
             <div className="description">
-              <Details flow={this.props.flow} depth={this.props.depth} location={this.props.location} selectedLocation={this.props.selectedLocation} locationType={this.props.locationType} updateLocation={this.props.updateLocation} gaugeWidth={this.props.gaugeWidth} />
+              <Details flow={this.props.flow} depth={this.props.depth} flowColor={this.props.flowColor} depthColor={this.props.depthColor} location={this.props.location} selectedLocation={this.props.selectedLocation} locationType={this.props.locationType} updateLocation={this.props.updateLocation} gaugeWidth={this.props.gaugeWidth} />
             </div>
           </div>
           <div className="modal-footer">

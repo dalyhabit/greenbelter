@@ -19,6 +19,8 @@ class App extends React.Component {
       location: null,
       flow: null,
       depth: null,
+      depthColor: '#EF5350',
+      flowColor: '#EF5350',
       siteIndex: {
         "hill-of-life": "08155240",
         "sculpture-falls": "08155240",
@@ -93,6 +95,39 @@ class App extends React.Component {
     }
   }
 
+  setGaugeColor(flow, depth) {
+    const colors = {
+      red: '#EF5350',
+      yellow: '#FFCA28',
+      green: '#66BB6A'
+    };
+    let flowColor;
+    let depthColor;
+
+    if (flow < 3) {
+      flowColor = colors.red;
+    } else if (flow >= 3 && flow < 10) {
+      flowColor = colors.yellow;
+    } else if (flow >= 10 && flow < 150) {
+      flowColor = colors.green;
+    } else if (flow >= 150 && flow < 300) {
+      flowColor = colors.yellow;
+    } else {
+      flowColor = colors.red;
+    }
+
+    if (depth < 2) {
+      depthColor = colors.red;
+    } else {
+      flowColor = colors.green;
+    }
+
+    this.setState({
+      depthColor: depthColor,
+      flowColor: flowColor
+    });
+  }
+
   updateLocation(type, name) {
     this.setState({ 
       selectedLocation: name,
@@ -106,11 +141,14 @@ class App extends React.Component {
     fetch(`https://waterservices.usgs.gov/nwis/iv/?format=json&indent=on&sites=${siteId}&parameterCd=00060,00065&siteStatus=all`)
     .then(response => response.json())
     .then((data) => {
+      const flow = Number(data.value.timeSeries[0].values[0].value[0].value);
+      const depth = Number(data.value.timeSeries[1].values[0].value[0].value);
       this.setState({
           location: data.value.timeSeries[0].sourceInfo.siteName,
-          flow: Number(data.value.timeSeries[0].values[0].value[0].value),
-          depth: Number(data.value.timeSeries[1].values[0].value[0].value)
+          flow: flow,
+          depth: depth
         });
+      this.setGaugeColor(flow, depth);
     })
     .catch(error => {
       console.error('ERROR FETCHING WATER DATA\n', error);
@@ -128,7 +166,7 @@ class App extends React.Component {
           />
           <Route
             path='/:url'
-            render={() => <SwimmingHole flow={this.state.flow} depth={this.state.depth} location={this.state.location} selectedLocation={this.state.selectedLocation} locationType={this.state.locationType} gaugeWidth={this.state.gaugeWidth} updateLocation={this.updateLocation}/>}
+            render={() => <SwimmingHole flow={this.state.flow} depth={this.state.depth} flowColor={this.state.flowColor} depthColor={this.state.depthColor} location={this.state.location} selectedLocation={this.state.selectedLocation} locationType={this.state.locationType} gaugeWidth={this.state.gaugeWidth} updateLocation={this.updateLocation}/>}
           />
         </div>
       </BrowserRouter>
