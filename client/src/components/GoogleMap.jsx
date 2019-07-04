@@ -22,7 +22,7 @@ export default class GoogleMap extends React.Component {
 
   render() {
     return (
-      <div className="app-body swimming-hole-container">
+      <div className="app-body details-container">
         <div className="swimming-hole-map">
           <iframe src={this.state.mapIndex[this.props.selectedLocation]} width="800" height="600" frameBorder="0" allowFullScreen></iframe>
         </div>

@@ -27,31 +27,33 @@ export default class Details extends React.Component {
 
   render() {
     return (
-      <div className="app-body swimming-hole-container">
+      <div className="details-container">
         <div className="swimming-hole-water">
           <h3 className="details-title">Water Data</h3>
           <div className="details-body">
-            <div className="flow-gauge">
+            <div className="gauge">
               <Gauge
                 value={this.props.depth}
                 valueFormatter={(val) => this.props.depth ? `${val} ft` : 'Loading...'}
                 width={this.props.gaugeWidth}
-                height={this.props.gaugeWidth * .82}
+                height={this.props.gaugeWidth}
                 label="Depth"
                 valueLabelStyle={ {'fontSize': '90%'} }
+                topLabelStyle={ {'fontSize': '120%'} }
                 min={0}
                 max={20}
                 color={this.props.depthColor}
               />
             </div>
-            <div className="flow-gauge">
+            <div className="gauge">
               <Gauge
                 value={this.props.flow}
                 valueFormatter={(val) => this.props.flow ? `${val} cf/s` : 'Loading...'}
                 width={this.props.gaugeWidth}
-                height={this.props.gaugeWidth * .82}
+                height={this.props.gaugeWidth}
                 label="Flow Rate"
                 valueLabelStyle = { {'fontSize': '90%'} }
+                topLabelStyle={ {'fontSize': '120%'} }
                 min={0}
                 max={300}
                 color={this.props.flowColor}

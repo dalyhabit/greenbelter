@@ -47,74 +47,52 @@
       width: 100%;
     }
 
-    /* TOOLBAR */
-
-    .toolbar {
-      /* background-color: #b0cc6f; */
-      /* color: #fffff0; */
-      /* color: #b0cc6f; */
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
+    #footer {
+      height: 26px;
       width: 100%;
-      height: 48px;
+      text-align: center;
     }
 
-    .toolbar a {
-      text-decoration: inherit;
+    #copyright {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
     }
 
-    #location-title {
-      padding-top: .5em;
-    }
-
-    .title {
-      /* color: #fffff0; */
-      color: #b0cc6f;
-      padding-left: 5px;
-    }
-
-    .pointer {
-      cursor: pointer;
-    }
-
-    .nav-links {
-      list-style: none;
-      padding-right: 5px;
-    }
-
-    .nav-links li {
-      margin-left: 1em;
-      transition: border-bottom 0.2s;
-      font-size: 75%;
-    }
-
-    .nav-links li:hover {
+    /* .nav-links li:hover {
       cursor: pointer;
       border-bottom: 2px solid #e67e22;
-    }
+    } */
 
     /* MAIN COMPONENTS */
 
     .app-body {
       width: 100%;
-      height: 100%;
+      height: calc(100% - 26px);
     }
 
     /* SWIMMING HOLE */
 
-    .swimming-hole-container {
+    .details-container {
+      height: 100%;
       display: flex;
-      /* flex-direction: row; */
       flex-direction: column;
       justify-content: center;
       align-items: center;
     }
 
     .swimming-hole-component {
-      margin: auto;
-      width: 80%;
-      height: 90%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .wrapper {
+      height: 100%;
+      width: 100%;
+      max-width: 1140px;
+      margin: 0 auto;
     }
 
     .swimming-hole-map {
@@ -123,40 +101,16 @@
     }
     
     .swimming-hole-water {
-      font-family: 'Roboto', sans-serif;
       width: 100%;
-      height: 75%;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      font-size: 130%;
     }
 
     .swimming-hole-water h2 {
       text-align: center;
-    }
-
-    .swimming-hole-map,
-    .swimming-hole-water {
-      margin: 5px;
-    }
-
-    .water-data {
-      vertical-align: center;
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-evenly;
-    }
-    
-    .water-data li {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-    }
-
-    .value {
-      float: right;
     }
 
     .swimming-hole-map iframe {
@@ -166,20 +120,12 @@
 
     .disclaimer {
       font-size: 60%;
-      margin-top: 1em;
     }
 
     /* GREENBELT MAP */
 
     .swimming-hole-label:hover {
       cursor: pointer;
-    }
-
-    .click-message {
-      font-size: 80%;
-      position: absolute;
-      top: calc(48px + 1em);
-      left: 1em;
     }
 
     .svg-wrapper {
@@ -202,29 +148,24 @@
 
     /* MODAL */
 
-    .flex-container {
-      height: calc(100% - 90px);
+    .swimming-hole-body {
+      height: calc(100% - 95px);
       display: flex;
       flex-direction: row;
       justify-content: space-around;
     }
 
-    .modal-body {
-      height: 100%;
-      width: 90%;
-      margin: 0 5%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .modal-header {
+    .swimming-hole-header {
       font-size: 34px;
-      height: 55px;
+      height: 60px;
       text-align: center;
     }
 
-    .modal-footer {
+    #location-title {
+      padding-top: .2em;
+    }
+
+    .swimming-hole-footer {
       height: 35px;
     }
 
@@ -244,28 +185,18 @@
     }
 
     .details-body {
-      padding: 1em 0;
       width: 100%;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
     }
 
-    .flow-gauge {
+    .gauge {
       width: 50%;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       align-items: center;
-    }
-
-    .gauge-label {
-      text-align: center;
-      font-size: 80%;
-    }
-
-    .speedometer {
-      margin-bottom: -40px;
     }
 
     .location-name {
@@ -294,155 +225,108 @@
 
     /* MEDIA QUERIES */
     @media only screen and (max-width: 1200px) {
-      .swimming-hole-component {
-        width: 900px !important;
-      }
+
     }
 
     @media only screen and (max-width: 1023px) {
-      .swimming-hole-component {
-        width: 800px !important;
+
+    }
+
+    @media only screen and (max-width: 830px) {
+      .swimming-hole-footer {
+        height: 55px;
       }
-      .modal-body {
-        width: 100%;
-        margin: 0;
+      .swimming-hole-body {
+        height: calc(100% - 115px);
       }
     }
 
     @media only screen and (max-width: 767px) {
-      .swimming-hole-component {
-        width: 100% !important;
-        /* height: 80% !important; */
-      }
       .details-body {
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
       }
-      .google-map {
-        padding-top: 1em;
+      .swimming-hole-water {
+        height: 80%;
       }
-      .modal-header {
+      .swimming-hole-header {
         font-size: 28px;
       }
-      .details-title {
-        margin-bottom: 5px;
-        font-size: 95%;
-      }
-      .location-details {
-        font-size: 70%;
-      }
-      .modal-footer {
-        height: 50px;
-      }
-      .flex-container {
+      .details-body {
         height: calc(100% - 105px);
       }
     }
 
     @media only screen and (max-width: 812px) and (orientation: landscape) {
-      .swimming-hole-component {
-        width: 100% !important;
-        /* height: 80% !important; */
-      }
       .details-body {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
       }
-      .modal-header {
-        font-size: 24px;
-        height: 35px;
+      .swimming-hole-water,
+      .swimming-hole-map {
+        height: 85%;
       }
-      .flex-container {
-        height: calc(100% - 60px);
+      .swimming-hole-body {
+        height: calc(100% - 85px);
       }
-      .modal-footer {
+      .swimming-hole-footer {
         height: 25px;
         font-size: 60%
       }
-      .speedometer {
-        margin-bottom: -55px;
-      }
-      /* .google-map {
-        width: 60%;
-      } */
       .location-details {
         font-size: 50%;
       }
       .details-title {
-        font-size: 75%;
+        font-size: 85%;
       }
     }
 
     @media only screen and (max-width: 600px) {
-      .swimming-hole-component {
-        width: 100% !important;
-        height: 100% !important;
+      .swimming-hole-water {
+        height: 100%;
       }
-      .flex-container {
-        height: calc(100% - 105px);
+      .swimming-hole-body {
+        height: calc(100% - 120px);
         display: flex;
         flex-direction: column;
         justify-content: center;
       }
-      .modal-footer {
-        height: 70px;
+      .swimming-hole-footer {
+        height: 60px;
       }
-      .flex-container {
-        height: calc(100% - 125px);
-      }
-      .google-map {
-        height: 50%;
-      }
-      .swimming-hole-map {
-        height: 95%;
-      }
+      .google-map,
       .description {
         height: 50%;
-      }
-      .details-title {
-        margin-bottom: .5em;
-      }
-      .gauge-label {
-        margin-top: .5em;
-      }
-      .speedometer {
-        margin-bottom: -40px;
       }
       .details-body {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
       }
-      .location-details {
-        margin-top: .5em;
-      }
     }
 
     @media only screen and (max-width: 480px) {
-      .modal-footer {
-        height: 90px;
+      .swimming-hole-footer {
+        height: 70px;
       }
-      .flex-container {
-        height: calc(100% - 145px);
+      .swimming-hole-body {
+        height: calc(100% - 130px);
       }
-      .speedometer {
-        margin-bottom: -30px;
+      #copyright {
+        font-size: 75%;
       }
     }
 
     @supports (-webkit-overflow-scrolling: touch) {
       @media only screen and (max-width: 480px) {
-        .gauge-label {
-          margin-top: 2em;
-        }
-        .location-details{
+        /* .location-details{
           display: none;
         }
         .details-title {
           display: none;
-        }
+        } */
       }
     }
 

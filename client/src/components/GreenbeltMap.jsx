@@ -17,7 +17,6 @@ export default class GreenbeltMap extends React.Component {
     return (
       <div className="app-body svg-wrapper">
         <svg className="swimming-holes" viewBox="0 0 776 647">
-          <title>greenbelt-map</title>
           <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
             <g id="greenbelt" transform="translate(-11.000000, 1.000000)">
               <g id="Map" transform="translate(92.000000, 0.000000)">

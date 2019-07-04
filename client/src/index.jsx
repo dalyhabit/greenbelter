@@ -68,16 +68,22 @@ class App extends React.Component {
   setGaugeSize(width, orientation) {
     if (width > 1200) {
       this.setState({
-        gaugeWidth: 210
+        gaugeWidth: 280
       });
     } else if (width <= 1200 && width > 1023) {
       this.setState({
-        gaugeWidth: 180
+        gaugeWidth: 250
       });
     } else if (width <= 1023 && width > 767) {
-      this.setState({
-        gaugeWidth: 155
-      });
+      if (orientation) {
+        this.setState({
+          gaugeWidth: 170
+        });
+      } else {
+        this.setState({
+          gaugeWidth: 220
+        });
+      }
     } else if (width <= 767 && width > 480) {
       if (orientation) {
         this.setState({
@@ -168,6 +174,9 @@ class App extends React.Component {
             path='/:url'
             render={() => <SwimmingHole flow={this.state.flow} depth={this.state.depth} flowColor={this.state.flowColor} depthColor={this.state.depthColor} location={this.state.location} selectedLocation={this.state.selectedLocation} locationType={this.state.locationType} gaugeWidth={this.state.gaugeWidth} updateLocation={this.updateLocation}/>}
           />
+          <div id="footer">
+            <p id="copyright">Copyright &copy; 2019 Patrick Daly. All rights reserved.</p>
+          </div>
         </div>
       </BrowserRouter>
     );
