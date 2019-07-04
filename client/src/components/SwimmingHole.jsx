@@ -63,7 +63,7 @@ export default class SwimmingHole extends React.Component {
             </div>
           </div>
           <div className="swimming-hole-footer">
-            <p className="disclaimer">The Austin Parks Department closes trailheads after heavy rain. Always check park closure status at the <a target="_blank" href="http://austintexas.gov/parkclosures">City of Austin Parks and Recreation Website</a> or call the Barton Creek Greenbelt Hotline at (512) 974-1250 before going to the Barton Creek Greenbelt. The city of Austin does not provide Safe Swimming Threshold data for the Barton Creek Greenbelt. Stagnant or slow-moving water can lead to bacteria build-up. Water that is moving too quickly can be dangerous. The data provided on this website is for informational purposes only. Swim at your own risk.</p>
+            <p className="disclaimer">The Austin Parks Department closes trailheads after heavy rain. Always check park closure status at the <a target="_blank" href="http://austintexas.gov/parkclosures">City of Austin Parks and Recreation Website</a> or call the Barton Creek Greenbelt Hotline at (512) 974-1250 before going to the Barton Creek Greenbelt. The city of Austin does not provide Safe Swimming Threshold data for the Barton Creek Greenbelt. Stagnant or slow-moving water can lead to bacteria build-up. Water that is moving too quickly can be dangerous. The data provided on this website is for informational purposes only. Swim at your own risk. Copyright &copy; 2019 Patrick Daly. All rights reserved.</p>
           </div>
         </div>
       </div>

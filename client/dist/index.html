@@ -82,6 +82,7 @@
     }
 
     .swimming-hole-component {
+      height: 100%;
       width: 100%;
       display: flex;
       flex-direction: column;
@@ -214,13 +215,17 @@
     .disclaimer {
       margin: 0;
       font-family: 'Roboto', sans-serif;
-      font-size: 50%
+      font-size: 50%;
     }
 
     .back-arrow {
       position: fixed;
       top: .5em;
       left: .5em;
+    }
+
+    .swimming-hole-component + #footer {
+      display: none;
     }
 
     /* MEDIA QUERIES */
@@ -288,13 +293,13 @@
         height: 100%;
       }
       .swimming-hole-body {
-        height: calc(100% - 120px);
+        height: calc(100% - 125px);
         display: flex;
         flex-direction: column;
         justify-content: center;
       }
       .swimming-hole-footer {
-        height: 60px;
+        height: 65px;
       }
       .google-map,
       .description {
@@ -309,10 +314,10 @@
 
     @media only screen and (max-width: 480px) {
       .swimming-hole-footer {
-        height: 70px;
+        height: 90px;
       }
       .swimming-hole-body {
-        height: calc(100% - 130px);
+        height: calc(100% - 150px);
       }
       #copyright {
         font-size: 75%;
