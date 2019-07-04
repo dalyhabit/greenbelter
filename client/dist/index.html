@@ -321,12 +321,20 @@
 
     @supports (-webkit-overflow-scrolling: touch) {
       @media only screen and (max-width: 480px) {
-        /* .location-details{
+        .location-details{
           display: none;
         }
         .details-title {
           display: none;
-        } */
+        }
+      }
+      @media only screen and (max-width: 812px) and (orientation: landscape) { 
+        .location-details{
+          display: none;
+        }
+        .details-title {
+          display: none;
+        }
       }
     }
 
