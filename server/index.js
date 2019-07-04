@@ -1,6 +1,7 @@
 var express = require('express');
 var path = require('path');
 var app = express();
+var compression = require('compression')
 
 var allowedUrls = {
   '/': true,
@@ -16,6 +17,7 @@ var allowedUrls = {
   "/above-barton-springs": true
 };
 
+app.use(compression());
 app.use(express.static(__dirname + '/../client/dist'));
 
 app.get('/*', function(req, res) {

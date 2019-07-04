@@ -1,5 +1,6 @@
 import React from 'react';
 import Gauge from 'react-svg-gauge';
+import { NavLink } from 'react-router-dom';
 
 export default class Details extends React.Component {
 
@@ -62,7 +63,9 @@ export default class Details extends React.Component {
           </div>
           <div className="location-details">
             <h4>Measurement Location:</h4>
-            <p className="location-name" onClick={() => { this.handleClick('droplet', this.state.waterIndex[this.props.selectedLocation]) }}>{this.props.location ? this.props.location : 'Loading...'}</p>
+            <NavLink to={'/' + this.state.waterIndex[this.props.selectedLocation]} style={{ textDecoration: 'none' }}>
+              <p className="location-name" onClick={() => { this.handleClick('droplet', this.state.waterIndex[this.props.selectedLocation]) }}>{this.props.location ? this.props.location : 'Loading...'}</p>
+            </NavLink>
           </div>
         </div>
       </div>

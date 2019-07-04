@@ -25,6 +25,7 @@
     "webpack": "^2.2.1"
   },
   "dependencies": {
+    "compression": "^1.7.4",
     "express": "^4.15.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
