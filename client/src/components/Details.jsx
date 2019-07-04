@@ -37,7 +37,7 @@ export default class Details extends React.Component {
                 value={this.props.depth}
                 valueFormatter={(val) => this.props.depth ? `${val} ft` : 'Loading...'}
                 width={this.props.gaugeWidth}
-                height={this.props.gaugeWidth}
+                height={this.props.gaugeWidth * .8}
                 label="Depth"
                 valueLabelStyle={ {'fontSize': '90%'} }
                 topLabelStyle={ {'fontSize': '120%'} }
@@ -51,7 +51,7 @@ export default class Details extends React.Component {
                 value={this.props.flow}
                 valueFormatter={(val) => this.props.flow ? `${val} cf/s` : 'Loading...'}
                 width={this.props.gaugeWidth}
-                height={this.props.gaugeWidth}
+                height={this.props.gaugeWidth * .8}
                 label="Flow Rate"
                 valueLabelStyle = { {'fontSize': '90%'} }
                 topLabelStyle={ {'fontSize': '120%'} }
@@ -64,7 +64,7 @@ export default class Details extends React.Component {
           <div className="location-details">
             <h4>Measurement Location:</h4>
             <NavLink to={'/' + this.state.waterIndex[this.props.selectedLocation]} style={{ textDecoration: 'none' }} name={this.state.waterIndex[this.props.selectedLocation]}>
-              <p className="location-name" onClick={() => { this.handleClick('droplet', this.state.waterIndex[this.props.selectedLocation]) }}>{this.props.location ? this.props.location : 'Loading...'}</p>
+              <p className="location-name" onClick={() => { this.handleClick('droplet', this.state.waterIndex[this.props.selectedLocation]) }}>{this.props.waterDataLocation ? this.props.waterDataLocation : 'Loading...'}</p>
             </NavLink>
           </div>
         </div>

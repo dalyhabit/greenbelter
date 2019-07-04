@@ -185,7 +185,7 @@
 
     .details-title {
       text-align: center;
-      /* height: 32px; */
+      font-size: 150%;
     }
 
     .details-body {
@@ -237,7 +237,11 @@
     }
 
     @media only screen and (max-width: 1023px) {
-
+      .details-body {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
     }
 
     @media only screen and (max-width: 830px) {
@@ -252,7 +256,7 @@
     @media only screen and (max-width: 767px) {
       .details-body {
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
       }
       .swimming-hole-water {
@@ -284,10 +288,10 @@
         font-size: 60%
       }
       .location-details {
-        font-size: 50%;
+        /* font-size: 50%; */
       }
       .details-title {
-        font-size: 85%;
+        /* font-size: 85%; */
       }
     }
 
@@ -303,6 +307,9 @@
       }
       .swimming-hole-footer {
         height: 65px;
+      }
+      .swimming-hole-map {
+        height: 100%;
       }
       .google-map,
       .description {
@@ -328,7 +335,7 @@
     }
 
     @supports (-webkit-overflow-scrolling: touch) {
-      @media only screen and (max-width: 480px) {
+      /* @media only screen and (max-width: 480px) {
         .location-details{
           display: none;
         }
@@ -343,7 +350,7 @@
         .details-title {
           display: none;
         }
-      }
+      } */
     }
 
   </style>
