@@ -20,6 +20,14 @@ var allowedUrls = {
 app.use(compression());
 app.use(express.static(__dirname + '/../client/dist'));
 
+app.get('/robots.txt', function(req, res) {
+  res.sendFile(path.join(__dirname, '../client/dist/robots.txt'), function(err) {
+    if (err) {
+      res.status(500).send(err)
+    }
+  });
+})
+
 app.get('/*', function(req, res) {
   if (!allowedUrls[req.url]) {
     res.redirect('/');
