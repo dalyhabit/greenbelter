@@ -36,6 +36,7 @@ class App extends React.Component {
 
     this.fetchWaterData = this.fetchWaterData.bind(this);
     this.updateLocation = this.updateLocation.bind(this);
+    this.updateWaterData = this.updateWaterData.bind(this);
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
@@ -115,6 +116,11 @@ class App extends React.Component {
     this.fetchWaterData(siteId);
   }
 
+  updateWaterData(name) {
+    const siteId = this.state.siteIndex[name];
+    this.fetchWaterData(siteId);
+  }
+
   fetchWaterData(siteId) {
     fetch(`https://waterservices.usgs.gov/nwis/iv/?format=json&indent=on&sites=${siteId}&parameterCd=00060,00065&siteStatus=all`)
       .then(response => response.json())
@@ -144,7 +150,7 @@ class App extends React.Component {
           />
           <Route
             path='/:url'
-            render={({ match }) => <SwimmingHole match={match} flow={this.state.flow} depth={this.state.depth} flowColor={this.state.flowColor} depthColor={this.state.depthColor} waterDataLocation={this.state.waterDataLocation} selectedLocation={this.state.selectedLocation} locationType={this.state.locationType} gaugeWidth={this.state.gaugeWidth} updateLocation={this.updateLocation} />}
+            render={({ match }) => <SwimmingHole match={match} flow={this.state.flow} depth={this.state.depth} flowColor={this.state.flowColor} depthColor={this.state.depthColor} waterDataLocation={this.state.waterDataLocation} selectedLocation={this.state.selectedLocation} locationType={this.state.locationType} gaugeWidth={this.state.gaugeWidth} updateWaterData={this.updateWaterData} updateLocation={this.updateLocation} />}
           />
           <div id="footer">
             <p id="copyright">Copyright &copy; 2019 Patrick Daly. All rights reserved.</p>

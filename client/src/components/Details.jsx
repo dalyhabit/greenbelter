@@ -6,7 +6,10 @@ export default class Details extends React.Component {
 
   constructor(props) {
     super(props);
+    console.log('PROPS:', props);
     this.state = {
+      waterLocation: 'Upstream',
+      otherLocation: 'Downstream',
       waterIndex: {
         "hill-of-life": "lost-creek",
         "sculpture-falls": "lost-creek",
@@ -18,19 +21,42 @@ export default class Details extends React.Component {
         "lost-creek": "lost-creek",
         "loop-360": "loop-360",
         "above-barton-springs": "above-barton-springs"
+      },
+      downstreamWaterIndex: {
+        "hill-of-life": "loop-360",
+        "sculpture-falls": "loop-360",
+        "twin-falls": "loop-360",
+        "gus-fruh": "above-barton-springs",
+        "campbells-hole": "above-barton-springs",
+        "the-flats": "above-barton-springs",
+        "barton-springs": "above-barton-springs",
       }
     }
   }
 
-  handleClick(type, name) {
-    this.props.updateLocation(type, name);
+  handleClick(name) {
+    let waterLocation;
+    if (this.state.waterLocation === 'Upstream') {
+      waterLocation = this.state.downstreamWaterIndex[name];
+      this.setState({
+        waterLocation: 'Downstream',
+        otherLocation: 'Upstream'
+      });
+    } else {
+      waterLocation = this.state.waterIndex[name];
+      this.setState({
+        waterLocation: 'Upstream',
+        otherLocation: 'Downstream'
+      });
+    }
+    this.props.updateWaterData(waterLocation);
   }
 
   render() {
     return (
       <div className="details-container">
         <div className="swimming-hole-water">
-          <h3 className="details-title">Water Data</h3>
+          {this.props.locationType === 'star' ? <h3 className="details-title">{this.state.waterLocation} Water Data</h3> : <h3 className="details-title">Water Data</h3>}
           <div className="details-body">
             <div className="gauge">
               <Gauge
@@ -62,10 +88,13 @@ export default class Details extends React.Component {
             </div>
           </div>
           <div className="location-details">
-            <h4>Measurement Location:</h4>
-            <NavLink to={'/' + this.state.waterIndex[this.props.selectedLocation]} style={{ textDecoration: 'none' }} name={this.state.waterIndex[this.props.selectedLocation]}>
-              <p className="location-name" onClick={() => { this.handleClick('droplet', this.state.waterIndex[this.props.selectedLocation]) }}>{this.props.waterDataLocation ? this.props.waterDataLocation : 'Loading...'}</p>
-            </NavLink>
+            {
+              this.props.locationType === 'star' 
+                ? 
+                <p className="pointer" onClick={() => {this.handleClick(this.props.selectedLocation)}}>View {this.state.otherLocation} Water Data Instead</p> 
+                : 
+                null
+            }
           </div>
         </div>
       </div>

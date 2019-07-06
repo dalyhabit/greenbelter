@@ -149,7 +149,7 @@ export default class GreenbeltMap extends React.Component {
                   </text>
                 </Link>
               </g>
-              <a target="_blank" href="https://www.tankedapparel.com/other-stuff/greenbelt-swimming-holes-18x24-print">
+              <a target="_blank" name="greenbelt-poster-link" href="https://www.tankedapparel.com/other-stuff/greenbelt-swimming-holes-18x24-print">
                 <g id="Banner" transform="translate(341.000000, 13.000000)">
                   <g>
                     <g>
