@@ -65,7 +65,7 @@ export default class GreenbeltMap extends React.Component {
           </g>
         </svg>
         <span id="info-box">
-          <p>Is there water at the Barton Creek Greenbelt today? Click on a location on the map to view water data from the nearest upstream water gauge and directions to swimming spots on the greenbelt.</p>
+          <p id="info-text">Is there water at the Barton Creek Greenbelt today? Click on a location on the map to view water data from the nearest upstream water gauge and directions to swimming spots on the greenbelt.</p>
         </span>
         <svg className="swimming-holes" viewBox="0 0 776 647">
           <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
