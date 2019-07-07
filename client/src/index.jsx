@@ -153,7 +153,7 @@ class App extends React.Component {
             render={({ match }) => <SwimmingHole match={match} flow={this.state.flow} depth={this.state.depth} flowColor={this.state.flowColor} depthColor={this.state.depthColor} waterDataLocation={this.state.waterDataLocation} selectedLocation={this.state.selectedLocation} locationType={this.state.locationType} gaugeWidth={this.state.gaugeWidth} updateWaterData={this.updateWaterData} updateLocation={this.updateLocation} />}
           />
           <div id="footer">
-            <p id="copyright">Copyright &copy; 2019 Patrick Daly. All rights reserved.</p>
+            <p id="copyright">Copyright &copy; 2019 <a className="footer-link" name="patrick-daly-website" target="_blank" href="https://dalyhabit.com">Patrick Daly</a>. All rights reserved.</p>
           </div>
         </div>
       </BrowserRouter>
