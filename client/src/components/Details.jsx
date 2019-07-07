@@ -6,7 +6,6 @@ export default class Details extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log('PROPS:', props);
     this.state = {
       waterLocation: 'Upstream',
       otherLocation: 'Downstream',
