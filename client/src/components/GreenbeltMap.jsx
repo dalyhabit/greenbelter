@@ -34,10 +34,12 @@ export default class GreenbeltMap extends React.Component {
 
   componentDidMount() {
     window.addEventListener('mousedown', this.clickOutside, false);
+    window.addEventListener('touchstart', this.clickOutside, false);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('mousedow', this.clickOutside, false);
+    window.removeEventListener('mousedown', this.clickOutside, false);
+    window.removeEventListener('touchstart', this.clickOutside, false);
   }
 
   render() {
