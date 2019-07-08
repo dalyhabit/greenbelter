@@ -6,17 +6,44 @@ export default class GreenbeltMap extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      showInfo: false
+    }
+
     this.handleClick = this.handleClick.bind(this);
+    this.infoClick = this.infoClick.bind(this);
+    this.clickOutside = this.clickOutside.bind(this);
   }
 
   handleClick(type, name) {
     this.props.updateLocation(type, name);
   }
 
+  infoClick(showHide) {
+    this.setState({
+      showInfo: showHide
+    });
+  }
+
+  clickOutside(e) {
+    if (e.srcElement.id === 'info-text') {
+      return
+    }
+    this.infoClick(false);
+  }
+
+  componentDidMount() {
+    window.addEventListener('mousedown', this.clickOutside, false);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('mousedow', this.clickOutside, false);
+  }
+
   render() {
     return (
       <div className="app-body svg-wrapper">
-        <svg id="info-button" version="1.1" x="0px" y="0px" viewBox="0 0 330 330" 
+        <svg ref={this.infoButton} onClick={() => { this.infoClick(true) }} id="info-button" version="1.1" x="0px" y="0px" viewBox="0 0 330 330" 
           style={{
             enableBackground: "new 0 0 330 330",
             height: '20px',
@@ -64,7 +91,7 @@ export default class GreenbeltMap extends React.Component {
           <g>
           </g>
         </svg>
-        <span id="info-box">
+        <span style={this.state.showInfo ? {display: 'block'} : {}} id="info-box">
           <h1 id="info-text">Is there water at the Barton Creek Greenbelt today? Click on a location on the map to view water data from the nearest upstream water gauge and directions to swimming spots on the greenbelt.</h1>
         </span>
         <svg className="swimming-holes" viewBox="0 0 776 647">
