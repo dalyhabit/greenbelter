@@ -89,7 +89,7 @@ export default class Details extends React.Component {
             {
               this.props.locationType === 'star' 
                 ? 
-                <p className="underline-link" onClick={() => {this.handleClick(this.props.selectedLocation)}}>View {this.state.otherLocation} Water Data Instead</p> 
+                <p className="change-water-link" onClick={() => {this.handleClick(this.props.selectedLocation)}}>View {this.state.otherLocation} Water Data Instead</p> 
                 : 
                 null
             }

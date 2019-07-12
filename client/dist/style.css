@@ -1,3 +1,5 @@
+/* GLOBAL */
+
 * {
     margin: 0;
     padding: 0;
@@ -27,6 +29,8 @@ body,
 .pointer {
     cursor: pointer;
 }
+
+/* HEADER / FOOTER COMPONENTS */
 
 #info-box {
     width: 200px;
@@ -67,9 +71,14 @@ body,
     width: 100%;
 }
 
-.underline-link {
-    cursor: pointer;
-    color: rgb(74, 144, 226);
+.disclaimer {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 50%;
+}
+
+.swimming-hole-component + #footer {
+    display: none;
 }
 
 /* MAIN COMPONENTS */
@@ -79,15 +88,32 @@ body,
     height: calc(100% - 26px);
 }
 
-/* SWIMMING HOLE */
+/* GREENBELT MAP */
 
-.details-container {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.swimming-hole-label:hover,
+#Banner:hover {
+    cursor: pointer;
 }
+
+.svg-wrapper {
+    text-align: center;
+}
+
+svg.swimming-holes {
+    height: 100%;
+    max-width: 98%;
+}
+
+.star:hover {
+    fill: #F74747;
+    cursor: pointer;
+}
+.droplet:hover {
+    fill: #F74747;
+    cursor: pointer;
+}
+
+/* SWIMMING HOLE (GOOGLE) MAP COMPONENT */
 
 .swimming-hole-component {
     height: 100%;
@@ -97,7 +123,7 @@ body,
     justify-content: space-between;
 }
 
-.wrapper {
+.swimming-hole-container {
     height: 100%;
     width: 100%;
     max-width: 1140px;
@@ -128,35 +154,13 @@ body,
     height: 100% !important;
 }
 
-.disclaimer {
-    font-size: 60%;
-}
+/* DETAILS COMPONENT */
 
-/* GREENBELT MAP */
-
-.swimming-hole-label:hover {
-    cursor: pointer;
+.back-arrow {
+    position: fixed;
+    top: .5em;
+    left: .5em;
 }
-
-.svg-wrapper {
-    text-align: center;
-}
-
-svg.swimming-holes {
-    height: 100%;
-    max-width: 98%;
-}
-
-.star:hover {
-    fill: #F74747;
-    cursor: pointer;
-}
-.droplet:hover {
-    fill: #F74747;
-    cursor: pointer;
-}
-
-/* MODAL */
 
 .swimming-hole-body {
     height: calc(100% - 95px);
@@ -187,6 +191,14 @@ svg.swimming-holes {
 .description {
     height: 100%;
     width: 100%;
+}
+
+.details-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .details-title {
@@ -222,27 +234,13 @@ svg.swimming-holes {
     cursor: pointer;
 }
 
-#Banner:hover {
+.change-water-link {
     cursor: pointer;
-}
-
-.disclaimer {
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
-    font-size: 50%;
-}
-
-.back-arrow {
-    position: fixed;
-    top: .5em;
-    left: .5em;
-}
-
-.swimming-hole-component + #footer {
-    display: none;
+    color: rgb(74, 144, 226);
 }
 
 /* MEDIA QUERIES */
+
 @media only screen and (max-width: 1023px) {
     .details-body {
         flex-direction: column;
