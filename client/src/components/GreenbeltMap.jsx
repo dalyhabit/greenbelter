@@ -324,7 +324,7 @@ export default class GreenbeltMap extends React.Component {
                   <tspan x="37" y="29">Swimming Hole</tspan>
                 </text>
                 <text id="Water-Data-Point" fontFamily="ReenieBeanie, Reenie Beanie" fontSize="30" fontWeight="normal" fill="#000000">
-                  <tspan x="38" y="57">Water Data</tspan>
+                  <tspan x="38" y="57">Water Gauge</tspan>
                 </text>
               </g>
             </g>

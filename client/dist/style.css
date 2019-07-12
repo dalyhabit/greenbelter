@@ -1,34 +1,34 @@
-  * {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
+}
 
-  html {
+html {
     background-color: #fffff0;
     color: rgb(77, 76, 76);
     font-family: 'Reenie Beanie', cursive;
     font-size: 20px;
     text-rendering: optimizeLegibility;
-  }
+}
 
-  body {
+body {
     overflow: hidden;
-  }
+}
 
-  html,
-  body,
-  #app,
-  .react-root {
+html,
+body,
+#app,
+.react-root {
     height: 100%;
     width: 100%;
-  }
+}
 
-  .pointer {
+.pointer {
     cursor: pointer;
-  }
+}
 
-  #info-box {
+#info-box {
     width: 200px;
     background-color: rgb(248, 244, 236);
     border: 1px solid black;
@@ -39,77 +39,77 @@
     left: calc(.2em + 25px);
     display: none;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  }
+}
 
-  #info-text {
+#info-text {
     padding: .25em;
-  }
+}
 
-  #info-button:hover ~ #info-box {
+#info-button:hover ~ #info-box {
     display: block;
-  }
+}
 
-  #footer {
+#footer {
     height: 26px;
     width: 100%;
     text-align: center;
-  }
+}
 
-  .footer-link {
+.footer-link {
     text-decoration: none;
     cursor: pointer;
     color: rgb(77, 76, 76);
-  }
+}
 
-  #copyright {
+#copyright {
     position: fixed;
     bottom: 0;
     width: 100%;
-  }
+}
 
-  .underline-link {
+.underline-link {
     cursor: pointer;
     color: rgb(74, 144, 226);
-  }
+}
 
-  /* MAIN COMPONENTS */
+/* MAIN COMPONENTS */
 
-  .app-body {
+.app-body {
     width: 100%;
     height: calc(100% - 26px);
-  }
+}
 
-  /* SWIMMING HOLE */
+/* SWIMMING HOLE */
 
-  .details-container {
+.details-container {
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
+}
 
-  .swimming-hole-component {
+.swimming-hole-component {
     height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-  }
+}
 
-  .wrapper {
+.wrapper {
     height: 100%;
     width: 100%;
     max-width: 1140px;
     margin: 0 auto;
-  }
+}
 
-  .swimming-hole-map {
+.swimming-hole-map {
     width: 100%;
     height: 75%;
-  }
-  
-  .swimming-hole-water {
+}
+
+.swimming-hole-water {
     height: 75%;
     width: 100%;
     display: flex;
@@ -117,226 +117,222 @@
     justify-content: center;
     align-items: center;
     font-size: 130%;
-  }
+}
 
-  .swimming-hole-water h2 {
+.swimming-hole-water h2 {
     text-align: center;
-  }
+}
 
-  .swimming-hole-map iframe {
+.swimming-hole-map iframe {
     width: 100% !important;
     height: 100% !important;
-  }
+}
 
-  .disclaimer {
+.disclaimer {
     font-size: 60%;
-  }
+}
 
-  /* GREENBELT MAP */
+/* GREENBELT MAP */
 
-  .swimming-hole-label:hover {
+.swimming-hole-label:hover {
     cursor: pointer;
-  }
+}
 
-  .svg-wrapper {
+.svg-wrapper {
     text-align: center;
-  }
+}
 
-  svg.swimming-holes {
+svg.swimming-holes {
     height: 100%;
     max-width: 98%;
-  }
+}
 
-  .star:hover {
+.star:hover {
     fill: #F74747;
     cursor: pointer;
-  }
-  .droplet:hover {
+}
+.droplet:hover {
     fill: #F74747;
     cursor: pointer;
-  }
+}
 
-  /* MODAL */
+/* MODAL */
 
-  .swimming-hole-body {
+.swimming-hole-body {
     height: calc(100% - 95px);
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-  }
+}
 
-  .swimming-hole-header {
+.swimming-hole-header {
     font-size: 34px;
     height: 60px;
     text-align: center;
-  }
+}
 
-  #location-title {
+#location-title {
     padding-top: .2em;
-  }
+}
 
-  .swimming-hole-footer {
+.swimming-hole-footer {
     height: 35px;
-  }
+}
 
-  .google-map {
+.google-map {
     height: 100%;
     width: 100%;
-  }
+}
 
-  .description {
+.description {
     height: 100%;
     width: 100%;
-  }
+}
 
-  .details-title {
+.details-title {
     text-align: center;
     font-size: 150%;
     margin-bottom: .5em;
-  }
+}
 
-  .details-body {
+.details-body {
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-  }
+}
 
-  .gauge {
+.gauge {
     width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-  }
+}
 
-  .location-name {
+.location-name {
     margin: 0;
-  }
+}
 
-  .location-details {
+.location-details {
     text-align: center;
-  }
+}
 
-  .location-name:hover {
+.location-name:hover {
     cursor: pointer;
-  }
+}
 
-  #Banner:hover {
+#Banner:hover {
     cursor: pointer;
-  }
+}
 
-  .disclaimer {
+.disclaimer {
     margin: 0;
     font-family: 'Roboto', sans-serif;
     font-size: 50%;
-  }
+}
 
-  .back-arrow {
+.back-arrow {
     position: fixed;
     top: .5em;
     left: .5em;
-  }
+}
 
-  .swimming-hole-component + #footer {
+.swimming-hole-component + #footer {
     display: none;
-  }
+}
 
-  /* MEDIA QUERIES */
-  @media only screen and (max-width: 1200px) {
-
-  }
-
-  @media only screen and (max-width: 1023px) {
+/* MEDIA QUERIES */
+@media only screen and (max-width: 1023px) {
     .details-body {
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
-  }
+}
 
-  @media only screen and (max-width: 830px) {
+@media only screen and (max-width: 830px) {
     .swimming-hole-footer {
-      height: 55px;
+        height: 55px;
     }
     .swimming-hole-body {
-      height: calc(100% - 115px);
+        height: calc(100% - 115px);
     }
-  }
+}
 
-  @media only screen and (max-width: 767px) {
+@media only screen and (max-width: 767px) {
     .details-body {
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
     .details-title {
-      margin-bottom: 0;
+        margin-bottom: 0;
     }
     .swimming-hole-header {
-      font-size: 28px;
+        font-size: 28px;
     }
     .details-body {
-      height: calc(100% - 105px);
+        height: calc(100% - 105px);
     }
-  }
+}
 
-  @media only screen and (max-width: 812px) and (orientation: landscape) {
+@media only screen and (max-width: 812px) and (orientation: landscape) {
     .details-body {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
     }
     .swimming-hole-water {
-      height: 100%;
+        height: 100%;
     }
     .swimming-hole-map {
-      height: 85%;
+        height: 85%;
     }
     .swimming-hole-body {
-      height: calc(100% - 85px);
+        height: calc(100% - 85px);
     }
     .swimming-hole-footer {
-      height: 25px;
-      font-size: 60%
+        height: 25px;
+        font-size: 60%
     }
-  }
+}
 
-  @media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) {
     .swimming-hole-water {
-      height: 100%;
+        height: 100%;
     }
     .swimming-hole-body {
-      height: calc(100% - 125px);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+        height: calc(100% - 125px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
     .swimming-hole-footer {
-      height: 65px;
+        height: 65px;
     }
     .swimming-hole-map {
-      height: 100%;
+        height: 100%;
     }
     .google-map,
     .description {
-      height: 50%;
+        height: 50%;
     }
     .details-body {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
     }
-  }
+}
 
-  @media only screen and (max-width: 480px) {
+@media only screen and (max-width: 480px) {
     .swimming-hole-footer {
-      height: 90px;
+        height: 90px;
     }
     .swimming-hole-body {
-      height: calc(100% - 150px);
+        height: calc(100% - 150px);
     }
     #copyright {
-      font-size: 75%;
+        font-size: 75%;
     }
-  }
+}

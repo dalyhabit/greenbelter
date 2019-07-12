@@ -1,6 +1,5 @@
 import React from 'react';
 import Gauge from 'react-svg-gauge';
-import { NavLink } from 'react-router-dom';
 
 export default class Details extends React.Component {
 

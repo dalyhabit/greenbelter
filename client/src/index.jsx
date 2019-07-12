@@ -10,12 +10,11 @@ class App extends React.Component {
 
     this.state = {
       selectedLocation: null,
-      locationType: null,
-      width: 0,
-      height: 0,
-      gaugeWidth: 0,
-      orientation: null,
       waterDataLocation: null,
+      locationType: null,
+      screenWidth: 0,
+      screenHeight: 0,
+      gaugeWidth: 0,
       flow: null,
       depth: null,
       depthColor: '#EF5350',
@@ -51,8 +50,8 @@ class App extends React.Component {
 
   updateWindowDimensions() {
     this.setState({
-      width: window.innerWidth,
-      height: window.innerHeight
+      screenWidth: window.innerWidth,
+      screenHeight: window.innerHeight
     });
     this.setGaugeSize(window.innerWidth);
   }
