@@ -67,7 +67,7 @@ class App extends React.Component {
     } else if (width <= 767 && width > 480) {
       gaugeWidth = 220;
     } else if (width <= 480) {
-      gaugeWidth = 155;
+      gaugeWidth = 180;
     }
 
     this.setState({ gaugeWidth: gaugeWidth });
