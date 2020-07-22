@@ -1,27 +1,10 @@
-import { opine, serveStatic, request, response } from 'https://deno.land/x/opine@main/mod.ts';
-import * as path from "https://deno.land/std/path/mod.ts";
-import { __ } from 'https://deno.land/x/dirname/mod.ts';
-const { __filename, __dirname } = __(import.meta);
+import { opine, serveStatic, path, __ } from './deps.ts';
+import { AllowedUrlsType, RequestType, ResponseType } from './types.ts';
 
+const { __dirname } = __(import.meta);
 const app = opine();
 
-app.use(serveStatic(__dirname + '/../client/dist'));
-
-type allowedUrlsType = {
-    '/': boolean;
-    '/hill-of-life': boolean;
-    '/sculpture-falls': boolean;
-    '/twin-falls': boolean;
-    '/gus-fruh': boolean;
-    '/campbells-hole': boolean;
-    '/the-flats': boolean;
-    '/barton-springs': boolean;
-    '/lost-creek': boolean;
-    '/loop-360': boolean;
-    '/above-barton-springs': boolean;
-};
-
-const allowedUrls: allowedUrlsType = {
+const allowedUrls: AllowedUrlsType = {
     '/': true,
     '/hill-of-life': true,
     '/sculpture-falls': true,
@@ -35,7 +18,20 @@ const allowedUrls: allowedUrlsType = {
     '/above-barton-springs': true
 };
 
-app.get('/*', async function(req: typeof request, res: typeof response) {
+app.use(serveStatic(__dirname + '/../client/dist'));
+
+app.get('/robots.txt', async function(req: RequestType, res: ResponseType) {
+    try {
+        await res.sendFile(path.join(__dirname + '../client/dist/robots.txt'))
+    } catch(err) {
+        if (err && res && res.status) {
+            res.status = 500;
+            res.send(err);
+        }
+    }
+})
+
+app.get('/*', async function(req: RequestType, res: ResponseType) {
     if (!allowedUrls.hasOwnProperty(req.url)) {
         res.redirect('/');
     } else {
