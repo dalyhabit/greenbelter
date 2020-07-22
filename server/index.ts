@@ -24,10 +24,8 @@ app.get('/robots.txt', async function(req: RequestType, res: ResponseType) {
     try {
         await res.sendFile(path.join(__dirname + '../client/dist/robots.txt'))
     } catch(err) {
-        if (err && res && res.status) {
-            res.status = 500;
-            res.send(err);
-        }
+        res.status = 500;
+        res.send(err);
     }
 })
 
@@ -38,10 +36,8 @@ app.get('/*', async function(req: RequestType, res: ResponseType) {
         try {
             await res.sendFile(path.join(__dirname + '/../client/dist/index.html'))
         } catch(err) {
-            if (err && res && res.status) {
-                res.status = 500;
-                res.send(err);
-            }
+            res.status = 500;
+            res.send(err);
         }
     }
 });
