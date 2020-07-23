@@ -22,7 +22,7 @@ app.use(serveStatic(__dirname + '/../client/dist'));
 
 app.get('/robots.txt', async function(req: RequestType, res: ResponseType) {
     try {
-        await res.sendFile(path.join(__dirname + '../client/dist/robots.txt'))
+        await res.sendFile(path.join(__dirname + '/../client/dist/robots.txt'))
     } catch(err) {
         res.status = 500;
         res.send(err);
