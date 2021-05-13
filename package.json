@@ -7,6 +7,7 @@
     "restart": "pm2 startOrRestart pm2.config.js",
     "deploy": "pm2 deploy pm2.config.js production",
     "webpack": "webpack -d --watch",
+    "build": "webpack",
     "start": "nodemon server/index.js"
   },
   "author": "Patrick Daly",
