@@ -21,7 +21,7 @@
     "@babel/preset-env": "^7.5.4",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
-    "pm2": "^3.5.1",
+    "pm2": "^5.2.0",
     "webpack": "^4.35.3",
     "webpack-cli": "^3.3.6"
   },
