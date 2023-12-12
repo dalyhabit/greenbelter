@@ -59,7 +59,7 @@ export default class Details extends React.Component {
             <div className="gauge">
               <Gauge
                 value={this.props.depth}
-                valueFormatter={(val) => this.props.depth ? `${val} ft` : 'Loading...'}
+                valueFormatter={(val) => this.props.depth || this.props.flow === '0.00' ? `${val} ft` : 'Loading...'}
                 width={this.props.gaugeWidth}
                 height={this.props.gaugeWidth * .8}
                 label="Depth"
@@ -73,7 +73,7 @@ export default class Details extends React.Component {
             <div className="gauge">
               <Gauge
                 value={this.props.flow}
-                valueFormatter={(val) => this.props.flow ? `${val} cf/s` : 'Loading...'}
+                valueFormatter={(val) => this.props.flow || this.props.flow === '0.00' ? `${val} cf/s` : 'Loading...'}
                 width={this.props.gaugeWidth}
                 height={this.props.gaugeWidth * .8}
                 label="Flow Rate"
