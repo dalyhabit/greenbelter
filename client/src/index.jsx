@@ -144,7 +144,7 @@ const App = () => {
         />
       </Routes>
       <div id="footer">
-        <p id="copyright">Copyright &copy; 2023 <a className="footer-link" name="patrick-daly-website" target="_blank" href="https://dalyhabit.com">Patrick Daly</a>. All rights reserved.</p>
+        <p id="copyright">Copyright &copy; 2025 <a className="footer-link" name="patrick-daly-website" target="_blank" href="https://dalyhabit.com">Patrick Daly</a>. All rights reserved.</p>
       </div>
     </div>
   );
