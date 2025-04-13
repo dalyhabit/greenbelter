@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import WaterChart from './WaterChart';
 
 const Details = ({ locationType, depth, flow, depthColor, flowColor, selectedLocation, updateWaterData }) => {
   const [waterLocation, setWaterLocation] = useState('Upstream');
@@ -44,22 +45,26 @@ const Details = ({ locationType, depth, flow, depthColor, flowColor, selectedLoc
   return (
     <div className="details-container">
       <div className="swimming-hole-water">
-        {locationType === 'star' ? 
-          <h3 className="details-title">{waterLocation} Water Data</h3> : 
-          <h3 className="details-title">Water Data</h3>
-        }
         <div className="details-body">
           <div className="data-display">
-            <h4>Depth</h4>
-            <p className="data-value" style={{ color: depthColor }}>
-              {depth || flow === 0 ? `${depth} ft` : 'Loading...'}
-            </p>
+            <WaterChart
+              value={depth}
+              mode="depth"
+              thresholds={{ low: 1.5, safe: 4 }}
+              max={15}
+              label="Depth"
+              unit="ft"
+            />
           </div>
           <div className="data-display">
-            <h4>Flow Rate</h4>
-            <p className="data-value" style={{ color: flowColor }}>
-              {flow || flow === 0 ? `${flow} cf/s` : 'Loading...'}
-            </p>
+            <WaterChart
+              value={flow}
+              mode="flow"
+              thresholds={{ low: 0, safe: 20, danger: 150 }}
+              max={300}
+              label="Flow Rate"
+              unit="cf/s"
+            />
           </div>
         </div>
         <div className="location-details">

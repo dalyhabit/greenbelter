@@ -1,18 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap');
+
+:root {
+  font-family: 'Quicksand', system-ui, sans-serif;
+}
+
 .data-display {
+  flex: 1;
+  min-width: 0;
+  max-width: 50%;
   text-align: center;
-  margin: 1rem;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
+  margin: 0;
+  padding: 0.75rem;
+  background: rgba(2, 132, 199, 0.07);
+  border-radius: 16px;
+  border: 1px solid rgba(2, 132, 199, 0.1);
 }
 
 .data-display h4 {
   margin: 0 0 0.5rem 0;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
+  font-weight: 500;
 }
 
 .data-value {
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-size: 1.875rem;
+  font-weight: 600;
   margin: 0;
-} 
+  color: #0c4a6e;
+}
+
+.water-chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  padding-top: 1.7rem;
+}
+
+.water-chart__label {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #0369a1;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.water-chart__bar-wrapper {
+  position: relative;
+  width: 2.5rem;
+  height: 30vh;
+  min-height: 120px;
+  max-height: 200px;
+  margin-top: 1.5rem;
+}
+
+.water-chart__bar {
+  background-color: #e0e0e0;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.water-chart__fill {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: var(--fill-percent, 0%);
+  transition: height 0.4s ease;
+}
+
+/* Color variants */
+.water-chart-fill--green {
+  background-color: #22c55e;
+}
+.water-chart-fill--yellow {
+  background-color: #facc15;
+}
+.water-chart-fill--red {
+  background-color: #ef4444;
+}
+.water-chart-fill--gray {
+  background-color: #9ca3af;
+}
+
+.water-chart__value {
+  position: absolute;
+  top: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.875rem;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.water-chart__status {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Status text color */
+.water-chart__status--green {
+  color: #22c55e;
+}
+.water-chart__status--yellow {
+  color: #facc15;
+}
+.water-chart__status--red {
+  color: #ef4444;
+}
+.water-chart__status--gray {
+  color: #6b7280;
+}
+
+/* Details Component Styles */
+.details-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.details-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #0c4a6e;
+  margin-bottom: 1.75rem;
+  text-align: center;
+}
+
+.details-body {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  margin: 0 auto;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.location-details {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.change-water-link {
+  color: #0284c7;
+  cursor: pointer;
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.change-water-link:hover {
+  border-color: currentColor;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .details-container {
+    padding: 0.5rem;
+  }
+  
+  .details-title {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .details-body {
+    gap: 1rem;
+    padding: 0 0.5rem;
+    flex-wrap: nowrap;
+  }
+  
+  .data-display {
+    flex: 1;
+    min-width: 0;
+    max-width: 50%;
+    padding: 0.25rem;
+  }
+
+  .water-chart {
+    font-size: 0.9rem;
+  }
+
+  .water-chart__bar-wrapper {
+    min-height: 100px;
+  }
+
+  .data-value {
+    font-size: 1.5rem;
+  }
+  
+  .data-display h4 {
+    font-size: 1.125rem;
+  }
+}
+
+/* GLOBAL */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: #fffff0;
+    color: rgb(77, 76, 76);
+    font-family: 'Quicksand', system-ui, sans-serif;
+    font-size: 20px;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    overflow: hidden;
+}
+
+html,
+body,
+#app,
+.react-root {
+    height: 100%;
+    width: 100%;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+/* HEADER / FOOTER COMPONENTS */
+
+#info-box {
+    width: 200px;
+    background-color: rgb(248, 244, 236);
+    border: 1px solid black;
+    font-family: 'Quicksand', system-ui, sans-serif;
+    font-size: 60%;
+    position: absolute;
+    top: .2em;
+    left: calc(.2em + 25px);
+    display: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/* GREENBELT MAP */
+
+.swimming-hole-label {
+    font-family: 'Quicksand', system-ui, sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+#Legend text {
+    font-family: 'Quicksand', system-ui, sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+}
