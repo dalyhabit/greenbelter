@@ -1,101 +1,85 @@
-import React from 'react';
-import Gauge from 'react-svg-gauge';
+import React, { useState } from 'react';
+import WaterChart from './WaterChart';
 
-export default class Details extends React.Component {
+const Details = ({ locationType, depth, flow, depthColor, flowColor, selectedLocation, updateWaterData }) => {
+  const [waterLocation, setWaterLocation] = useState('Upstream');
+  const [otherLocation, setOtherLocation] = useState('Downstream');
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      waterLocation: 'Upstream',
-      otherLocation: 'Downstream',
-      waterIndex: {
-        "hill-of-life": "lost-creek",
-        "sculpture-falls": "lost-creek",
-        "twin-falls": "lost-creek",
-        "gus-fruh": "loop-360",
-        "campbells-hole": "loop-360",
-        "the-flats": "loop-360",
-        "barton-springs": "above-barton-springs",
-        "lost-creek": "lost-creek",
-        "loop-360": "loop-360",
-        "above-barton-springs": "above-barton-springs"
-      },
-      downstreamWaterIndex: {
-        "hill-of-life": "loop-360",
-        "sculpture-falls": "loop-360",
-        "twin-falls": "loop-360",
-        "gus-fruh": "above-barton-springs",
-        "campbells-hole": "above-barton-springs",
-        "the-flats": "above-barton-springs",
-        "barton-springs": "above-barton-springs",
-      }
-    }
-  }
+  const waterIndex = {
+    "hill-of-life": "lost-creek",
+    "sculpture-falls": "lost-creek",
+    "twin-falls": "lost-creek",
+    "gus-fruh": "loop-360",
+    "campbells-hole": "loop-360",
+    "the-flats": "loop-360",
+    "barton-springs": "above-barton-springs",
+    "lost-creek": "lost-creek",
+    "loop-360": "loop-360",
+    "above-barton-springs": "above-barton-springs"
+  };
 
-  handleClick(name) {
-    let waterLocation;
-    if (this.state.waterLocation === 'Upstream') {
-      waterLocation = this.state.downstreamWaterIndex[name];
-      this.setState({
-        waterLocation: 'Downstream',
-        otherLocation: 'Upstream'
-      });
+  const downstreamWaterIndex = {
+    "hill-of-life": "loop-360",
+    "sculpture-falls": "loop-360",
+    "twin-falls": "loop-360",
+    "gus-fruh": "above-barton-springs",
+    "campbells-hole": "above-barton-springs",
+    "the-flats": "above-barton-springs",
+    "barton-springs": "above-barton-springs",
+  };
+
+  const handleClick = (name) => {
+    let newWaterLocation;
+    if (waterLocation === 'Upstream') {
+      newWaterLocation = downstreamWaterIndex[name];
+      setWaterLocation('Downstream');
+      setOtherLocation('Upstream');
     } else {
-      waterLocation = this.state.waterIndex[name];
-      this.setState({
-        waterLocation: 'Upstream',
-        otherLocation: 'Downstream'
-      });
+      newWaterLocation = waterIndex[name];
+      setWaterLocation('Upstream');
+      setOtherLocation('Downstream');
     }
-    this.props.updateWaterData(waterLocation);
-  }
+    updateWaterData(newWaterLocation);
+  };
 
-  render() {
-    return (
-      <div className="details-container">
-        <div className="swimming-hole-water">
-          {this.props.locationType === 'star' ? <h3 className="details-title">{this.state.waterLocation} Water Data</h3> : <h3 className="details-title">Water Data</h3>}
-          <div className="details-body">
-            <div className="gauge">
-              <Gauge
-                value={this.props.depth}
-                valueFormatter={(val) => this.props.depth || this.props.flow === 0 ? `${val} ft` : 'Loading...'}
-                width={this.props.gaugeWidth}
-                height={this.props.gaugeWidth * .8}
-                label="Depth"
-                valueLabelStyle={ {'fontSize': '90%'} }
-                topLabelStyle={ {'fontSize': '120%'} }
-                min={0}
-                max={20}
-                color={this.props.depthColor}
-              />
-            </div>
-            <div className="gauge">
-              <Gauge
-                value={this.props.flow}
-                valueFormatter={(val) => this.props.flow || this.props.flow === 0 ? `${val} cf/s` : 'Loading...'}
-                width={this.props.gaugeWidth}
-                height={this.props.gaugeWidth * .8}
-                label="Flow Rate"
-                valueLabelStyle = { {'fontSize': '90%'} }
-                topLabelStyle={ {'fontSize': '120%'} }
-                min={0}
-                max={300}
-                color={this.props.flowColor}
-              />
-            </div>
+  return (
+    <div className="details-container">
+      <div className="swimming-hole-water">
+        <div className="details-body">
+          <div className="data-display">
+            <WaterChart
+              value={depth}
+              mode="depth"
+              thresholds={{ low: 1.5, safe: 4 }}
+              max={15}
+              label="Depth"
+              unit="ft"
+            />
           </div>
-          <div className="location-details">
-            {
-              this.props.locationType === 'star' 
-                ? 
-                <p className="change-water-link" onClick={() => {this.handleClick(this.props.selectedLocation)}}>View {this.state.otherLocation} Water Data Instead</p> 
-                : 
-                null
-            }
+          <div className="data-display">
+            <WaterChart
+              value={flow}
+              mode="flow"
+              thresholds={{ low: 0, safe: 20, danger: 150 }}
+              max={300}
+              label="Flow Rate"
+              unit="cf/s"
+            />
           </div>
         </div>
+        <div className="location-details">
+          {locationType === 'star' && (
+            <p 
+              className="change-water-link" 
+              onClick={() => handleClick(selectedLocation)}
+            >
+              View {otherLocation} Water Data Instead
+            </p>
+          )}
+        </div>
       </div>
-    )
-  }
-}
+    </div>
+  );
+};
+
+export default Details;

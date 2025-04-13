@@ -144,37 +144,37 @@ export default class GreenbeltMap extends React.Component {
               <g id="Labels" transform="translate(9.000000, 201.000000)" fill="#000000" fontFamily="ReenieBeanie, Reenie Beanie" fontSize="38" fontWeight="normal">
                 <Link to="/twin-falls" name="twin-falls">
                   <text className="swimming-hole-label" id="Twin-Falls" onClick={() => { this.handleClick('star', 'twin-falls') }}>
-                    <tspan x="211" y="293">Twin Falls</tspan>
+                    <tspan x="240" y="293">Twin Falls</tspan>
                   </text>
                 </Link>
                 <Link to="/sculpture-falls" name="sculpture-falls">
                   <text className="swimming-hole-label" id="Sculpture-Falls" onClick={() => { this.handleClick('star', 'sculpture-falls') }}>
-                    <tspan x="268" y="100">Sculpture Falls</tspan>
+                    <tspan x="268" y="110">Sculpture Falls</tspan>
                   </text>
                 </Link>
                 <Link to="/barton-springs" name="barton-springs">
                   <text className="swimming-hole-label" id="Barton-Springs" onClick={() => { this.handleClick('star', 'barton-springs') }}>
-                    <tspan x="588" y="72">Barton Springs</tspan>
+                    <tspan x="560" y="80">Barton Springs</tspan>
                   </text>
                 </Link>
                 <Link to="/hill-of-life" name="hill-of-life">
                   <text className="swimming-hole-label" id="Hill-of-Life" onClick={() => { this.handleClick('star', 'hill-of-life') }}>
-                    <tspan x="0" y="37">Hill of Life</tspan>
+                    <tspan x="5" y="0">Hill of Life</tspan>
                   </text>
                 </Link>
                 <Link to="/gus-fruh" name="gus-fruh">
                   <text className="swimming-hole-label" id="Gus-Fruh" onClick={() => { this.handleClick('star', 'gus-fruh') }}>
-                    <tspan x="434" y="289">Gus Fruh</tspan>
+                    <tspan x="450" y="285">Gus Fruh</tspan>
                   </text>
                 </Link>
                 <Link to="/the-flats" name="the-flats">
                   <text className="swimming-hole-label" id="The-Flats" onClick={() => { this.handleClick('star', 'the-flats') }}>
-                    <tspan x="624" y="244">The Flats</tspan>
+                    <tspan x="650" y="244">The Flats</tspan>
                   </text>
                 </Link>
                 <Link to="/campbells-hole" name="campbells-hole">
                   <text className="swimming-hole-label" id="Campbell's-Hole" onClick={() => { this.handleClick('star', 'campbells-hole') }}>
-                    <tspan x="479" y="153">Campbell's Hole</tspan>
+                    <tspan x="490" y="153">Campbell's Hole</tspan>
                   </text>
                 </Link>
               </g>
@@ -321,10 +321,10 @@ export default class GreenbeltMap extends React.Component {
                 <polygon id="Star" stroke="#000000" fill="#EECA35" points="26.5247934 31 18.9834711 26.7553648 11.1322314 30.3090129 12.9917355 22.2145923 7 16.0944206 15.677686 15.304721 19.9132231 8 23.4256198 15.6008584 32 17.1802575 25.4917355 22.7081545"></polygon>
                 <path d="M18.5769057,38.2372572 L12.9254181,47.8137178 C11.7378162,49.8383079 11.6460904,52.4126451 12.9254181,54.5804546 C14.8485757,57.8392377 19.1265562,58.9662522 22.4805495,57.0976503 C25.8345428,55.2290721 26.9944763,51.0725245 25.0712944,47.8136942 L19.4198069,38.2372572 C19.2331244,37.9209143 18.7635639,37.9209143 18.5769057,38.2372572 Z" id="Droplet" stroke="#000000" fill="#4A90E2"></path>
                 <text id="Swimming-Hole" fontFamily="ReenieBeanie, Reenie Beanie" fontSize="30" fontWeight="normal" fill="#000000">
-                  <tspan x="37" y="29">Swimming Hole</tspan>
+                  <tspan x="37" y="26">Swimming Hole</tspan>
                 </text>
                 <text id="Water-Data-Point" fontFamily="ReenieBeanie, Reenie Beanie" fontSize="30" fontWeight="normal" fill="#000000">
-                  <tspan x="38" y="57">Water Gauge</tspan>
+                  <tspan x="38" y="54">Water Gauge</tspan>
                 </text>
               </g>
             </g>

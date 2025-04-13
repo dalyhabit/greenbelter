@@ -1,163 +1,159 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter, Route } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import GreenbeltMap from './components/GreenbeltMap.jsx';
 import SwimmingHole from './components/SwimmingHole.jsx';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
+const App = () => {
+  const [selectedLocation, setSelectedLocation] = useState(null);
+  const [waterDataLocation, setWaterDataLocation] = useState(null);
+  const [locationType, setLocationType] = useState(null);
+  const [screenWidth, setScreenWidth] = useState(0);
+  const [screenHeight, setScreenHeight] = useState(0);
+  const [gaugeWidth, setGaugeWidth] = useState(0);
+  const [flow, setFlow] = useState(null);
+  const [depth, setDepth] = useState(null);
+  const [depthColor, setDepthColor] = useState('#EF5350');
+  const [flowColor, setFlowColor] = useState('#EF5350');
 
-    this.state = {
-      selectedLocation: null,
-      waterDataLocation: null,
-      locationType: null,
-      screenWidth: 0,
-      screenHeight: 0,
-      gaugeWidth: 0,
-      flow: null,
-      depth: null,
-      depthColor: '#EF5350',
-      flowColor: '#EF5350',
-      siteIndex: {
-        "hill-of-life": "08155240",
-        "sculpture-falls": "08155240",
-        "twin-falls": "08155240",
-        "gus-fruh": "08155300",
-        "campbells-hole": "08155300",
-        "the-flats": "08155300",
-        "barton-springs": "08155400",
-        "lost-creek": "08155240",
-        "loop-360": "08155300",
-        "above-barton-springs": "08155400"
-      }
+  const siteIndex = {
+    "hill-of-life": "08155240",
+    "sculpture-falls": "08155240",
+    "twin-falls": "08155240",
+    "gus-fruh": "08155300",
+    "campbells-hole": "08155300",
+    "the-flats": "08155300",
+    "barton-springs": "08155400",
+    "lost-creek": "08155240",
+    "loop-360": "08155300",
+    "above-barton-springs": "08155400"
+  };
+
+  useEffect(() => {
+    updateWindowDimensions();
+    window.addEventListener('resize', updateWindowDimensions);
+    return () => {
+      window.removeEventListener('resize', updateWindowDimensions);
     };
+  }, []);
 
-    this.fetchWaterData = this.fetchWaterData.bind(this);
-    this.updateLocation = this.updateLocation.bind(this);
-    this.updateWaterData = this.updateWaterData.bind(this);
-    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
-  }
+  const updateWindowDimensions = () => {
+    setScreenWidth(window.innerWidth);
+    setScreenHeight(window.innerHeight);
+    setGaugeSize(window.innerWidth);
+  };
 
-  componentDidMount() {
-    this.updateWindowDimensions();
-    window.addEventListener('resize', this.updateWindowDimensions);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.updateWindowDimensions);
-  }
-
-  updateWindowDimensions() {
-    this.setState({
-      screenWidth: window.innerWidth,
-      screenHeight: window.innerHeight
-    });
-    this.setGaugeSize(window.innerWidth);
-  }
-
-  setGaugeSize(width) {
-    let gaugeWidth;
+  const setGaugeSize = (width) => {
+    let newGaugeWidth;
     if (width > 1200) {
-      gaugeWidth = 280;
+      newGaugeWidth = 280;
     } else if (width <= 1200 && width > 1023) {
-      gaugeWidth = 260;
+      newGaugeWidth = 260;
     } else if (width <= 1023 && width > 767) {
-      gaugeWidth = 240;
+      newGaugeWidth = 240;
     } else if (width <= 767 && width > 480) {
-      gaugeWidth = 220;
+      newGaugeWidth = 220;
     } else if (width <= 480) {
-      gaugeWidth = 180;
+      newGaugeWidth = 180;
     }
+    setGaugeWidth(newGaugeWidth);
+  };
 
-    this.setState({ gaugeWidth: gaugeWidth });
-  }
-
-  setGaugeColor(flow, depth) {
+  const setGaugeColor = (flow, depth) => {
     const colors = {
       red: '#EF5350',
       yellow: '#FFCA28',
       green: '#66BB6A'
     };
-    let flowColor;
-    let depthColor;
+    let newFlowColor;
+    let newDepthColor;
 
     if (flow < 3) {
-      flowColor = colors.red;
+      newFlowColor = colors.red;
     } else if (flow >= 3 && flow < 10) {
-      flowColor = colors.yellow;
+      newFlowColor = colors.yellow;
     } else if (flow >= 10 && flow < 150) {
-      flowColor = colors.green;
+      newFlowColor = colors.green;
     } else if (flow >= 150 && flow < 300) {
-      flowColor = colors.yellow;
+      newFlowColor = colors.yellow;
     } else {
-      flowColor = colors.red;
+      newFlowColor = colors.red;
     }
 
     if (depth < 2) {
-      depthColor = colors.red;
+      newDepthColor = colors.red;
     } else {
-      depthColor = colors.green;
+      newDepthColor = colors.green;
     }
 
-    this.setState({
-      depthColor: depthColor,
-      flowColor: flowColor
-    });
-  }
+    setDepthColor(newDepthColor);
+    setFlowColor(newFlowColor);
+  };
 
-  updateLocation(type, name) {
-    this.setState({
-      selectedLocation: name,
-      locationType: type
-    });
-    const siteId = this.state.siteIndex[name];
-    this.fetchWaterData(siteId);
-  }
+  const updateLocation = (type, name) => {
+    setSelectedLocation(name);
+    setLocationType(type);
+    const siteId = siteIndex[name];
+    fetchWaterData(siteId);
+  };
 
-  updateWaterData(name) {
-    const siteId = this.state.siteIndex[name];
-    this.fetchWaterData(siteId);
-  }
+  const updateWaterData = (name) => {
+    const siteId = siteIndex[name];
+    fetchWaterData(siteId);
+  };
 
-  fetchWaterData(siteId) {
+  const fetchWaterData = (siteId) => {
     fetch(`https://waterservices.usgs.gov/nwis/iv/?format=json&indent=on&sites=${siteId}&parameterCd=00060,00065&siteStatus=all`)
       .then(response => response.json())
       .then((data) => {
-        const flow = Number(data.value.timeSeries[0].values[0].value[0].value);
-        const depth = Number(data.value.timeSeries[1].values[0].value[0].value);
-        this.setState({
-          waterDataLocation: data.value.timeSeries[0].sourceInfo.siteName,
-          flow: flow,
-          depth: depth
-        });
-        this.setGaugeColor(flow, depth);
+        const newFlow = Number(data.value.timeSeries[0].values[0].value[0].value);
+        const newDepth = Number(data.value.timeSeries[1].values[0].value[0].value);
+        setWaterDataLocation(data.value.timeSeries[0].sourceInfo.siteName);
+        setFlow(newFlow);
+        setDepth(newDepth);
+        setGaugeColor(newFlow, newDepth);
       })
       .catch(error => {
         console.error('ERROR FETCHING WATER DATA\n', error);
-      })
-  }
+      });
+  };
 
-  render() {
-    return (
-      <BrowserRouter>
-        <div className="react-root">
-          <Route
-            exact
-            path='/'
-            render={() => <GreenbeltMap updateLocation={this.updateLocation} />}
-          />
-          <Route
-            path='/:url'
-            render={({ match }) => <SwimmingHole match={match} flow={this.state.flow} depth={this.state.depth} flowColor={this.state.flowColor} depthColor={this.state.depthColor} waterDataLocation={this.state.waterDataLocation} selectedLocation={this.state.selectedLocation} locationType={this.state.locationType} gaugeWidth={this.state.gaugeWidth} updateWaterData={this.updateWaterData} updateLocation={this.updateLocation} />}
-          />
-          <div id="footer">
-            <p id="copyright">Copyright &copy; 2023 <a className="footer-link" name="patrick-daly-website" target="_blank" href="https://dalyhabit.com">Patrick Daly</a>. All rights reserved.</p>
-          </div>
-        </div>
-      </BrowserRouter>
-    );
-  }
-}
+  return (
+    <div className="react-root">
+      <Routes>
+        <Route
+          path="/"
+          element={<GreenbeltMap updateLocation={updateLocation} />}
+        />
+        <Route
+          path="/:url"
+          element={
+            <SwimmingHole
+              flow={flow}
+              depth={depth}
+              flowColor={flowColor}
+              depthColor={depthColor}
+              waterDataLocation={waterDataLocation}
+              selectedLocation={selectedLocation}
+              locationType={locationType}
+              gaugeWidth={gaugeWidth}
+              updateWaterData={updateWaterData}
+              updateLocation={updateLocation}
+            />
+          }
+        />
+      </Routes>
+      <div id="footer">
+        <p id="copyright">Copyright &copy; 2025 <a className="footer-link" name="patrick-daly-website" target="_blank" href="https://dalyhabit.com">Patrick Daly</a>. All rights reserved.</p>
+      </div>
+    </div>
+  );
+};
 
-ReactDOM.render(<App />, document.getElementById('app'));
+const container = document.getElementById('app');
+const root = createRoot(container);
+root.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+);

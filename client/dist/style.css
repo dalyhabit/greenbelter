@@ -36,8 +36,7 @@ body,
     width: 200px;
     background-color: rgb(248, 244, 236);
     border: 1px solid black;
-    font-family: 'Reenie Beanie', cursive;
-    font-size: 60%;
+    font-size: 45%;
     position: absolute;
     top: .2em;
     left: calc(.2em + 25px);
@@ -243,7 +242,6 @@ svg.swimming-holes {
 
 @media only screen and (max-width: 1023px) {
     .details-body {
-        flex-direction: column;
         justify-content: center;
         align-items: center;
     }
@@ -260,7 +258,6 @@ svg.swimming-holes {
 
 @media only screen and (max-width: 767px) {
     .details-body {
-        flex-direction: column;
         justify-content: center;
         align-items: center;
     }
@@ -320,6 +317,24 @@ svg.swimming-holes {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+    }
+    .water-chart__bar-wrapper {
+        height: 20vh;
+        min-height: 80px;
+        max-height: 120px;
+    }
+    .water-chart {
+        padding-top: 1rem;
+    }
+    .water-chart__label {
+        font-size: 1rem;
+    }
+    .water-chart__value {
+        font-size: 0.75rem;
+        top: -1.5rem;
+    }
+    .water-chart__status {
+        font-size: 0.75rem;
     }
 }
 
