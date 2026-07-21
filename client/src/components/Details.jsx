@@ -50,8 +50,8 @@ const Details = ({ locationType, depth, flow, depthColor, flowColor, selectedLoc
             <WaterChart
               value={depth}
               mode="depth"
-              thresholds={{ low: 1.5, safe: 4 }}
-              max={15}
+              thresholds={{ low: 1.5, safe: 3 }}
+              max={6}
               label="Depth"
               unit="ft"
             />
@@ -61,7 +61,7 @@ const Details = ({ locationType, depth, flow, depthColor, flowColor, selectedLoc
               value={flow}
               mode="flow"
               thresholds={{ low: 0, safe: 20, danger: 150 }}
-              max={300}
+              max={150}
               label="Flow Rate"
               unit="cf/s"
             />

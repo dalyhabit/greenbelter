@@ -4,6 +4,8 @@ import GoogleMap from './GoogleMap.jsx';
 import { Link, useParams } from 'react-router-dom';
 
 const SwimmingHole = (props) => {
+  const { url } = useParams();
+
   const [typeIndex] = useState({
     "hill-of-life": "star",
     "sculpture-falls": "star",
@@ -31,11 +33,10 @@ const SwimmingHole = (props) => {
   });
 
   useEffect(() => {
-    const url = props.selectedLocation;
     if (url && url !== props.selectedLocation) {
       props.updateLocation(typeIndex[url], url);
     }
-  }, [props.selectedLocation]);
+  }, [url]);
 
   return (
     <div className="app-body swimming-hole-component">
