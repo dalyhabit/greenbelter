@@ -167,19 +167,19 @@
 
 /* Swimming hole (details) page layout */
 .swimming-hole-component {
-  height: 100%;
+  flex: 1 0 auto;
   width: 100%;
   display: flex;
   flex-direction: column;
 }
 
 .swimming-hole-container {
-  height: 100%;
   width: 100%;
   max-width: 1140px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  flex: 1 0 auto;
 }
 
 .swimming-hole-header,
@@ -187,25 +187,49 @@
   flex: none;
 }
 
+.swimming-hole-header {
+  position: relative;
+  padding: 1.5rem 1rem 1rem;
+  text-align: center;
+}
+
+.back-arrow {
+  position: absolute;
+  top: 1.5rem;
+  left: 1rem;
+  cursor: pointer;
+}
+
+#location-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #0c4a6e;
+  margin: 0;
+}
+
+.disclaimer {
+  font-size: 0.7rem;
+  color: #9ca3af;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.disclaimer a {
+  color: inherit;
+}
+
 .swimming-hole-body {
-  flex: 1;
-  min-height: 0;
+  flex: 1 0 auto;
   display: flex;
   flex-direction: row;
-  align-items: stretch;
+  align-items: center;
   gap: 1rem;
 }
 
 .google-map,
 .description {
-  flex: 1;
+  flex: 1 1 auto;
   min-width: 0;
-  min-height: 0;
-}
-
-.google-map {
-  display: flex;
-  flex-direction: column;
 }
 
 .google-map .details-container {
@@ -227,35 +251,23 @@
   border: 0;
 }
 
-.description {
-  overflow-y: auto;
-}
-
 /* Responsive adjustments */
 @media (max-width: 640px) {
   .swimming-hole-body {
     flex-direction: column;
-  }
-
-  .google-map {
-    flex: 0 0 45%;
-  }
-
-  .google-map .details-container {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+    align-items: stretch;
   }
 
   .google-map .swimming-hole-map {
-    flex: 1;
-    min-height: 0;
-    aspect-ratio: auto;
-    max-height: none;
+    max-height: 40vh;
   }
 
-  .description {
-    flex: 1 1 auto;
+  .swimming-hole-header {
+    padding: 1rem 1rem 0.75rem;
+  }
+
+  #location-title {
+    font-size: 1.75rem;
   }
 
   .details-container {
@@ -314,7 +326,8 @@ html {
 }
 
 body {
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 html,
@@ -323,6 +336,40 @@ body,
 .react-root {
     height: 100%;
     width: 100%;
+}
+
+.react-root {
+    display: flex;
+    flex-direction: column;
+}
+
+.svg-wrapper {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.swimming-holes {
+    display: block;
+    height: 100%;
+    width: auto;
+    max-width: 98%;
+}
+
+#footer {
+    flex: none;
+    padding: 0.5rem 0;
+    text-align: center;
+}
+
+#copyright {
+    font-size: 0.7rem;
+    color: #9ca3af;
+}
+
+#copyright .footer-link {
+    color: inherit;
 }
 
 .pointer {
